@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "username": "admin",
+        "password": "Admin123!",
+        "firtsname": "admin",
+        "lastname": "admin",
+        "phone": "+111111111",
+        "email": "admin@admin.com",
+        "image": "",
+        "type": "admin",
+        "status": "active"
+    },
+    {
+        "id": 2,
+        "username": "pera",
+        "password": "Pera123!",
+        "firtsname": "Petar",
+        "lastname": "Peric",
+        "phone": "+222222222",
+        "email": "pera@gmail.com",
+        "image": "",
+        "type": "participant",
+        "status": "active"
+    },
+    {
+        "id": 3,
+        "username": "zika",
+        "password": "Zika123!",
+        "firtsname": "Zika",
+        "lastname": "Zikic",
+        "phone": "+333333333",
+        "email": "zika@gmail.com",
+        "image": "",
+        "type": "organiser",
+        "status": "active"
+    },
+    {
+        "id": 4,
+        "username": "bob",
+        "password": "Blok123!",
+        "firtsname": "Bob",
+        "lastname": "Bobanovic",
+        "phone": "+4444444444",
+        "email": "bob@gmail.com",
+        "image": "",
+        "type": "participant",
+        "status": "inactive"
+    }
+]
