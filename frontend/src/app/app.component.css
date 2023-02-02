@@ -1,9 +1,9 @@
-body {
+/*body {
     min-height: 100vh;
     position: relative;
     margin: 0;
     padding-bottom: 50px;
-  }
+}
 
 .position-bottom {
     position: absolute;
@@ -11,7 +11,7 @@ body {
     height: 30px;
     margin: auto;
     width: 75%;
-}
+}*/
 
 .wheat-color {
     background-color: wheat;
