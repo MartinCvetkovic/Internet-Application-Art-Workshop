@@ -1,0 +1,26 @@
+body {
+    min-height: 100vh;
+    position: relative;
+    margin: 0;
+    padding-bottom: 50px;
+  }
+
+.position-bottom {
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    margin: auto;
+    width: 75%;
+}
+
+.wheat-color {
+    background-color: wheat;
+}
+
+.container-color {
+    background-color: aliceblue;
+}
+
+.main-row {
+    height: 600px;
+}
