@@ -1,1 +1,86 @@
-<p>register works!</p>
+<h3 class="text-center">Register</h3>
+<form>
+    <table class="table">
+        <tr>
+            <td>Firstname:</td>
+            <td><input type="text" class="form-control" name="firstname" [(ngModel)]="firstname"></td>
+        </tr>
+        <tr>
+            <td>Lastname:</td>
+            <td><input type="text" class="form-control" name="lastname" [(ngModel)]="lastname"></td>
+        </tr>
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" class="form-control" name="username" [(ngModel)]="username"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" class="form-control" name="password" [(ngModel)]="password"></td>
+        </tr>
+        <tr>
+            <td>Repeated password:</td>
+            <td><input type="password" class="form-control" name="repeatedPassword" [(ngModel)]="repeatedPassword"></td>
+        </tr>
+        <tr>
+            <td>Phone number:</td>
+            <td><input type="text" class="form-control" name="phone" [(ngModel)]="phone"></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" class="form-control" name="email" [(ngModel)]="email"></td>
+        </tr>
+        <tr>
+            <td>Profile picture:</td>
+            <td></td>
+        </tr>
+        <tr class="text-center">
+            <td>
+                <input class="form-check-input" type="radio" name="type" [(ngModel)]="type" value="participant">
+                <label class="form-check-label">Participant</label>
+            </td>
+            <td>
+                <input class="form-check-input" type="radio" name="type" [(ngModel)]="type" value="organiser">
+                <label class="form-check-label">Organiser</label>
+            </td>
+        </tr>
+        <tr *ngIf="type === 'organiser'">
+            <td>Organisation name:</td>
+            <td><input type="text" class="form-control" name="orgname" [(ngModel)]="orgname"></td>
+        </tr>
+        <tr *ngIf="type === 'organiser'">
+            <td>Country:</td>
+            <td><input type="text" class="form-control" name="country" [(ngModel)]="country"></td>
+        </tr>
+        <tr *ngIf="type === 'organiser'">
+            <td>City:</td>
+            <td><input type="text" class="form-control" name="city" [(ngModel)]="city"></td>
+        </tr>
+        <tr *ngIf="type === 'organiser'">
+            <td>Postal code:</td>
+            <td><input type="text" class="form-control" name="postal_code" [(ngModel)]="postal_code"></td>
+        </tr>
+        <tr *ngIf="type === 'organiser'">
+            <td>Organisation address:</td>
+            <td><input type="text" class="form-control" name="address" [(ngModel)]="address"></td>
+        </tr>
+        <tr *ngIf="type === 'organiser'">
+            <td>Street number:</td>
+            <td><input type="text" class="form-control" name="adrNumber" [(ngModel)]="adrNumber"></td>
+        </tr>
+        <tr *ngIf="type === 'organiser'">
+            <td>Registration number:</td>
+            <td><input type="number" class="form-control" name="reg_number" [(ngModel)]="reg_number"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center">
+                <button class="btn btn-light btn-outline-success" (click)="register()">Register</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center">
+                <label class="error">{{errorMessage}}</label>
+            </td>
+        </tr>
+    </table>
+    
+</form>
