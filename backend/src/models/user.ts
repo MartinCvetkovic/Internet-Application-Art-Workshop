@@ -6,7 +6,7 @@ let User = new Schema(
     {
         username:   {type: String},
         password:   {type: String},
-        firtsname:  {type: String},
+        firstname:  {type: String},
         lastname:   {type: String},
         phone:      {type: String},
         email:      {type: String},

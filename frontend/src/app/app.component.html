@@ -3,7 +3,7 @@
         <div class="col-sm-12 col-md-6">
             <header><h1>Welcome to Art Workshop</h1></header>
         </div>
-        <div class="col-sm-12 col-md-6   d-flex justify-content-end">
+        <div class="col-sm-12 col-md-6 d-flex justify-content-end" *ngIf="user == null; else logoutTemplate">
             <table>
                 <tr>
                     <td><label>New user?</label></td>
@@ -27,3 +27,22 @@
         </div>
     </div>
 </div>
+
+<ng-template #logoutTemplate>
+    <div class="col-sm-12 col-md-6 d-flex justify-content-end">
+        <form>
+            <table>
+                <tr>
+                    <td class="text-center">
+                        <label class="m-1">{{user["firstname"]}} {{user["lastname"]}}</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <button (click)="logout()" class="btn btn-light mb-1 mt-0 p-1">Logout</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</ng-template>

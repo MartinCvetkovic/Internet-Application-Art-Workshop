@@ -13,7 +13,7 @@ export class UserController{
                 if(user != null)
                     res.json(user);
                 else
-                    res.json({"message": "Nepostojeci korisnik sa zadatim kredencijalima."})
+                    res.json({"message": "Wrong username or password."})
             };
         });
     }
@@ -22,7 +22,7 @@ export class UserController{
         let user = new User({
             username:   req.body.username,
             password:   req.body.password,
-            firtsname:  req.body.firtsname,
+            firstname:  req.body.firstname,
             lastname:   req.body.lastname,
             phone:      req.body.phone,
             email:      req.body.email,

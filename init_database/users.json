@@ -2,7 +2,7 @@
     {
         "username": "admin",
         "password": "Admin123!",
-        "firtsname": "admin",
+        "firstname": "admin",
         "lastname": "admin",
         "phone": "+111111111",
         "email": "admin@admin.com",
@@ -13,7 +13,7 @@
     {
         "username": "pera",
         "password": "Pera123!",
-        "firtsname": "Petar",
+        "firstname": "Petar",
         "lastname": "Peric",
         "phone": "+222222222",
         "email": "pera@gmail.com",
@@ -24,7 +24,7 @@
     {
         "username": "zika",
         "password": "Zika123!",
-        "firtsname": "Zika",
+        "firstname": "Zika",
         "lastname": "Zikic",
         "phone": "+333333333",
         "email": "zika@gmail.com",
@@ -35,7 +35,7 @@
     {
         "username": "bob",
         "password": "Blok123!",
-        "firtsname": "Bob",
+        "firstname": "Bob",
         "lastname": "Bobanovic",
         "phone": "+4444444444",
         "email": "bob@gmail.com",
