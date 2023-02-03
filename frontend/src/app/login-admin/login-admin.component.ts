@@ -26,6 +26,10 @@ export class LoginAdminComponent implements OnInit {
           this.errorMessage = "Wrong credentials.";
           return;
         }
+        if (resp["status"] === "inactive"){
+          this.errorMessage = "User is inactive.";
+          return;
+        }
         localStorage.setItem("user", JSON.stringify(resp));
         location.href = "http://localhost:4200/";
       }

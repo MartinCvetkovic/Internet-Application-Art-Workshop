@@ -28,7 +28,7 @@ export class UserController{
             email:      req.body.email,
             image:      req.body.image,
             type:       req.body.type,
-            status:     req.body.status
+            status:     "inactive"
         });
 
         user.save().then(user => {

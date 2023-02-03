@@ -26,6 +26,10 @@ export class LoginComponent implements OnInit {
           this.errorMessage = "Wrong credentials.";
           return;
         }
+        if (resp["status"] === "inactive"){
+          this.errorMessage = "User is inactive.";
+          return;
+        }
         localStorage.setItem("user", JSON.stringify(resp));
         if (resp["type"] === "organiser"){
           this.userService.getOrganisation(resp["username"]).subscribe((rspns) => {
