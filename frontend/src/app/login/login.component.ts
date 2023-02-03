@@ -22,8 +22,23 @@ export class LoginComponent implements OnInit {
       if (resp["message"] != null){
         this.errorMessage = resp["message"];
       } else {
+        if (resp["type"] === "admin"){
+          this.errorMessage = "Wrong credentials.";
+          return;
+        }
         localStorage.setItem("user", JSON.stringify(resp));
-        location.href = "http://localhost:4200/";
+        if (resp["type"] === "organiser"){
+          this.userService.getOrganisation(resp["username"]).subscribe((rspns) => {
+            if (rspns["message"] != null){
+              this.errorMessage = rspns["message"];
+            } else {
+              localStorage.setItem("organisation", JSON.stringify(rspns));
+              location.href = "http://localhost:4200/";
+            }
+          });
+        } else {
+          location.href = "http://localhost:4200/";
+        }
       }
     });
   }

@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
 
   logout(){
     localStorage.removeItem("user");
+    localStorage.removeItem("organisation");
     location.reload();
   }
 }

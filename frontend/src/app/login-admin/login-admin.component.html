@@ -1,0 +1,23 @@
+<h3 class="text-center">Login as administrator</h3>
+<form action="">
+    <table class="table">
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" class="form-control" name="username" [(ngModel)]="username"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" class="form-control" name="password" [(ngModel)]="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center">
+                <button class="btn btn-light btn-outline-success" (click)="login()">Login</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center">
+                <label class="error">{{errorMessage}}</label>
+            </td>
+        </tr>
+    </table>
+</form>

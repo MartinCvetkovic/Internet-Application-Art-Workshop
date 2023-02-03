@@ -53,4 +53,18 @@ export class UserController{
             res.status(400).json({"message": "Error inserting user."})
         });
     }
+
+    getOrganisation(req: express.Request, res: express.Response) {
+        let username = req.body.username;
+
+        Organisation.findOne({"user": username}, (err, org) => {
+            if (err) console.log(err);
+            else {
+                if(org != null)
+                    res.json(org);
+                else
+                    res.json({"message": "Nonexistent organisation for user."})
+            };
+        });
+    }
 }

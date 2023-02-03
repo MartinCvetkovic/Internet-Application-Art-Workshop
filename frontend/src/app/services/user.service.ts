@@ -27,4 +27,12 @@ export class UserService {
 
     return this.http.post(`${this.uri}/users/register`, data);
   }
+
+  getOrganisation(username) {
+    const data = {
+      username: username
+    }
+
+    return this.http.post(`${this.uri}/users/getOrganisation`, data);
+  }
 }
