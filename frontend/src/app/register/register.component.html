@@ -31,7 +31,9 @@
         </tr>
         <tr>
             <td>Profile picture:</td>
-            <td></td>
+            <td>
+                <input type="file" name="image" [(ngModel)]="image" (change)="fileChangeEvent($event)">
+            </td>
         </tr>
         <tr class="text-center">
             <td>
@@ -79,6 +81,7 @@
         <tr>
             <td colspan="2" class="text-center">
                 <label class="error">{{errorMessage}}</label>
+                <label class="error">{{imageError}}</label>
             </td>
         </tr>
     </table>
