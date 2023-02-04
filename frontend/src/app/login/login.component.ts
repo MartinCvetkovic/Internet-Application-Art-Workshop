@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
           this.errorMessage = "Wrong credentials.";
           return;
         }
-        if (resp["status"] === "inactive"){
-          this.errorMessage = "User is inactive.";
+        if (resp["status"] !== "active"){
+          this.errorMessage = "User has not been accepted or has been blocked.";
           return;
         }
         localStorage.setItem("user", JSON.stringify(resp));
