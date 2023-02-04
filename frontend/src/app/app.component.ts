@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'Art workshop';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user'));
@@ -19,6 +20,6 @@ export class AppComponent implements OnInit {
   logout(){
     localStorage.removeItem("user");
     localStorage.removeItem("organisation");
-    location.reload();
+    location.href = "/";
   }
 }

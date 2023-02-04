@@ -15,4 +15,8 @@ userRouter.route("/getOrganisation").post(
     (req, res) => new UserController().getOrganisation(req, res)
 );
 
+userRouter.route("/changePassword").post(
+    (req, res) => new UserController().changePassword(req, res)
+);
+
 export default userRouter;

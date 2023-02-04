@@ -63,16 +63,16 @@ export class UserController{
                                 });
                     
                                 organisation.save().then(org => {
-                                    res.status(200).json({"message": "User and organisation registration request sent."})
+                                    res.status(200).json({"message": "User and organisation registration request sent."});
                                 }).catch(err => {
-                                    res.status(400).json({"message": "Error inserting organisation."})
+                                    res.status(400).json({"message": "Error inserting organisation."});
                                 });
                             }
                             else {
-                                res.status(200).json({"message": "User registration request sent."})
+                                res.status(200).json({"message": "User registration request sent."});
                             }
                         }).catch(err => {
-                            res.status(400).json({"message": "Error inserting user."})
+                            res.status(400).json({"message": "Error inserting user."});
                         });
 
                     };
@@ -90,7 +90,27 @@ export class UserController{
                 if(org != null)
                     res.json(org);
                 else
-                    res.json({"message": "Nonexistent organisation for user."})
+                    res.json({"message": "Nonexistent organisation for user."});
+            };
+        });
+    }
+    
+    changePassword(req: express.Request, res: express.Response) {
+        let username = req.body.username;
+        let oldPassword = req.body.oldPassword;
+        let newPassword = req.body.newPassword;
+
+        User.findOne({"username": username, "password": oldPassword}, (err, user) => {
+            if (err) console.log(err);
+            else {
+                if(user == null){
+                    res.json({"message": "Incorrect old password."});
+                    return;
+                }
+                User.updateOne({"username": username}, {"$set": {"password": newPassword}}, (err, user) => {
+                    if (err) console.log(err);
+                    else res.json({"message": "Password changed successfully"});
+                });
             };
         });
     }

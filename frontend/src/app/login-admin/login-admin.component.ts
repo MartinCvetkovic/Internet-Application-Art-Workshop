@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class LoginAdminComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -31,7 +32,7 @@ export class LoginAdminComponent implements OnInit {
           return;
         }
         localStorage.setItem("user", JSON.stringify(resp));
-        location.href = "http://localhost:4200/";
+        location.href = "/";
       }
     });
   }

@@ -1,6 +1,6 @@
 <div class="container container-color">
     <div class="row wheat-color mt-3 rounded">
-        <div class="col-sm-12 col-md-6">
+        <div class="col-sm-12 col-md-6 d-flex align-items-center">
             <header><h1>Welcome to Art Workshop</h1></header>
         </div>
         <div class="col-sm-12 col-md-6 d-flex justify-content-end" *ngIf="user == null; else logoutTemplate">
@@ -15,6 +15,9 @@
                 </tr>
             </table>
         </div>
+    </div>
+    <div class="row wheat-color mt-3 rounded">
+
     </div>
     <div class="row main-row d-flex justify-content-center mt-5">
         <router-outlet></router-outlet>
@@ -34,12 +37,15 @@
             <table>
                 <tr>
                     <td class="text-center">
-                        <label class="m-1">{{user["firstname"]}} {{user["lastname"]}}</label>
+                        <label class="m-1" style="font-size: large; font-weight: 500;">{{user["firstname"]}} {{user["lastname"]}}</label>
+                    </td>
+                    <td class="text-center">
+                        <button (click)="logout()" class="btn btn-light btn-outline-dark mb-1 mt-0 p-0">Logout</button>
                     </td>
                 </tr>
                 <tr>
-                    <td class="text-center">
-                        <button (click)="logout()" class="btn btn-light mb-1 mt-0 p-1">Logout</button>
+                    <td class="text-center" colspan="2">
+                        <a routerLink="changePassword">Change password?</a>
                     </td>
                 </tr>
             </table>
