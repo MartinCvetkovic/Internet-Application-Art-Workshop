@@ -39,7 +39,10 @@ export class ChangePasswordComponent implements OnInit {
 
     this.userService.changePassword(JSON.parse(localStorage.getItem("user"))["username"], this.oldPassword, this.newPassword).subscribe((resp)=>{
       if (resp["message"] === "Password changed successfully") {
-        this.infoMessage = resp["message"]
+        this.infoMessage = resp["message"];
+        localStorage.removeItem("user");
+        localStorage.removeItem("organisation");
+        location.href = "/";
       } else {
         this.errorMessage = resp["message"];
       }
