@@ -22,15 +22,17 @@ export class HomeComponent implements OnInit {
         }
       });
       this.allActiveWorkshopsCopy = this.allActiveWorkshops;
+      this.canWriteWorkshops = this.allActiveWorkshops.length > 0;
     })
   }
 
-  allWorkshops: Array<Workshop>;
-  allActiveWorkshops: Array<Workshop>;
+  allWorkshops:           Array<Workshop>;
+  allActiveWorkshops:     Array<Workshop>;
   allActiveWorkshopsCopy: Array<Workshop>;
-  isUnregistered: boolean;
-  nameParam: string;
-  placeParam: string;
+  isUnregistered:         boolean;
+  nameParam:              string;
+  placeParam:             string;
+  canWriteWorkshops:      boolean;
 
   sortByDate() {
     this.allActiveWorkshops.sort((w1, w2)=>{
@@ -53,6 +55,7 @@ export class HomeComponent implements OnInit {
       }
     });
     this.allActiveWorkshops = foundWorkshops;
+    this.canWriteWorkshops = this.allActiveWorkshops.length > 0;
   }
 
 }

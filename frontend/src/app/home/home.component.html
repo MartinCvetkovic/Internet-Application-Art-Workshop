@@ -22,7 +22,7 @@
 <div class="d-flex justify-content-center">
     <h2>Available workshops</h2>
 </div>
-<table class="table" *ngIf="allActiveWorkshops.length > 0; else noWorkshops">
+<table class="table" *ngIf="canWriteWorkshops; else noWorkshops">
     <tr *ngFor="let w of allActiveWorkshops">
         <table>
             <tr>

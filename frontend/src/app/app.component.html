@@ -1,7 +1,7 @@
 <div class="container container-color">
     <div class="row wheat-color mt-3 rounded">
         <div class="col-sm-12 col-md-6 d-flex align-items-center">
-            <header><h1>Welcome to Art Workshop</h1></header>
+            <header><h1><a routerLink="" style="text-decoration: none; color: rgb(28, 80, 126);">Welcome to Art Workshop</a></h1></header>
         </div>
         <div class="col-sm-12 col-md-6 d-flex justify-content-end" *ngIf="user == null; else logoutTemplate">
             <table>
@@ -16,8 +16,21 @@
             </table>
         </div>
     </div>
-    <div class="row wheat-color mt-3 rounded">
-
+    <div class="row menu rounded p-2">
+        <div class="col-sm-12 d-flex justify-content-around" *ngIf="user !== null && user['type'] === 'participant'">
+            <a routerLink="profile"><button class="btn btn-outline-info">Profile</button></a>
+            <a routerLink=""><button class="btn btn-outline-info">Workshops</button></a>
+            <a routerLink=""><button class="btn btn-outline-info">Become organiser</button></a>
+        </div>
+        <div class="col-sm-12 d-flex justify-content-around" *ngIf="user !== null && user['type'] === 'organiser'">
+            <a routerLink=""><button class="btn btn-outline-info">Profile</button></a>
+            <a routerLink=""><button class="btn btn-outline-info">Workshops</button></a>
+        </div>
+        <div class="col-sm-12 d-flex justify-content-around" *ngIf="user !== null && user['type'] === 'admin'">
+            <a routerLink=""><button class="btn btn-outline-info">Users</button></a>
+            <a routerLink=""><button class="btn btn-outline-info">Registrations</button></a>
+            <a routerLink=""><button class="btn btn-outline-info">Workshops</button></a>
+        </div>
     </div>
     <div class="row main-row d-flex justify-content-center mt-5">
         <router-outlet></router-outlet>

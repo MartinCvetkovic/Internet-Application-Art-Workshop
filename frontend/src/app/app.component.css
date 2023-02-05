@@ -11,3 +11,7 @@
     overflow: auto;
     min-height: 550px;
 }
+
+.menu {
+    background-color: rgb(226, 224, 241);
+}
