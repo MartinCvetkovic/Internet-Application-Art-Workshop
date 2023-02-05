@@ -28,4 +28,16 @@ export class HomeComponent implements OnInit {
   allActiveWorkshops: Array<Workshop>;
   isUnregistered: boolean;
 
+  sortByDate() {
+    this.allActiveWorkshops.sort((w1, w2)=>{
+      return (new Date(w1.date)).getTime() - (new Date(w2.date)).getTime();
+    })
+  }
+
+  sortByName() {
+    this.allActiveWorkshops.sort((w1, w2)=>{
+      return w1.name.localeCompare(w2.name);
+    })
+  }
+
 }

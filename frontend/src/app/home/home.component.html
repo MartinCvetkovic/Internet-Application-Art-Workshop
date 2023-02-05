@@ -1,4 +1,21 @@
 <h2>Available workshops</h2>
+<form>
+    <div class="input-group">
+        <input class="form-control" type="text" placeholder="Search for workshop...">
+        <div class="input-group-append">
+            <button class="btn btn-primary">Search</button>
+        </div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-center">
+        <table class="mb-2 text-center">
+            <tr>
+                <td class="pr-3"><button class="btn btn-primary" (click)="sortByDate()">Sort by date</button></td>
+                <td class="pl-3"><button class="btn btn-primary" (click)="sortByName()">Sort by name</button></td>
+            </tr>
+        </table>
+    </div>
+</form>
 <table class="table">
     <tr *ngFor="let w of allActiveWorkshops">
         <table>
