@@ -21,12 +21,16 @@ export class HomeComponent implements OnInit {
           this.allActiveWorkshops.push(workshop);
         }
       });
+      this.allActiveWorkshopsCopy = this.allActiveWorkshops;
     })
   }
 
   allWorkshops: Array<Workshop>;
   allActiveWorkshops: Array<Workshop>;
+  allActiveWorkshopsCopy: Array<Workshop>;
   isUnregistered: boolean;
+  nameParam: string;
+  placeParam: string;
 
   sortByDate() {
     this.allActiveWorkshops.sort((w1, w2)=>{
@@ -38,6 +42,17 @@ export class HomeComponent implements OnInit {
     this.allActiveWorkshops.sort((w1, w2)=>{
       return w1.name.localeCompare(w2.name);
     })
+  }
+
+  search() {
+    let foundWorkshops = [];
+    this.allActiveWorkshops = this.allActiveWorkshopsCopy;
+    this.allActiveWorkshops.forEach(workshop => {
+      if (workshop.name.search(this.nameParam) != -1 && workshop.place.search(this.placeParam) != -1) {
+        foundWorkshops.push(workshop);
+      }
+    });
+    this.allActiveWorkshops = foundWorkshops;
   }
 
 }

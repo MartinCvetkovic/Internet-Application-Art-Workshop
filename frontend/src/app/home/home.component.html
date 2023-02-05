@@ -1,10 +1,12 @@
-<h2>Available workshops</h2>
+<div class="d-flex justify-content-center">
+    <h2>Search for workshops</h2>
+</div>
+<br>
 <form>
     <div class="input-group">
-        <input class="form-control" type="text" placeholder="Search for workshop...">
-        <div class="input-group-append">
-            <button class="btn btn-primary">Search</button>
-        </div>
+        <input class="form-control" type="text" placeholder="Search by name..." [(ngModel)]="nameParam" name="nameParam">
+        <input class="form-control" type="text" placeholder="Search by place..." [(ngModel)]="placeParam" name="placeParam">
+        <button class="btn btn-primary" (click)="search()">Search</button>
     </div>
     <br>
     <div class="d-flex justify-content-center">
@@ -16,7 +18,11 @@
         </table>
     </div>
 </form>
-<table class="table">
+<br><br>
+<div class="d-flex justify-content-center">
+    <h2>Available workshops</h2>
+</div>
+<table class="table" *ngIf="allActiveWorkshops.length > 0; else noWorkshops">
     <tr *ngFor="let w of allActiveWorkshops">
         <table>
             <tr>
@@ -39,3 +45,10 @@
         </table>
     </tr>
 </table>
+
+<ng-template #noWorkshops>
+    <br><br><br><br>
+    <div class="d-flex justify-content-center">
+        <h5>There are no active workshops found.</h5>
+    </div>
+</ng-template>
