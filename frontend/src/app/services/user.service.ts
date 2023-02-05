@@ -76,4 +76,18 @@ export class UserService {
 
     return this.http.post(`${this.uri}/users/changePassword`, data);
   }
+
+  updateUser(oldEmail, firstname, lastname, username, phone, email, image) {
+    const data = {
+      oldEmail: oldEmail,
+      firstname: firstname,
+      lastname: lastname,
+      username: username,
+      phone: phone,
+      email: email,
+      image: image
+    }
+
+    return this.http.post(`${this.uri}/users/updateUser`, data);
+  }
 }

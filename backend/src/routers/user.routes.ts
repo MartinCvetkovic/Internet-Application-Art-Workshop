@@ -19,4 +19,8 @@ userRouter.route("/changePassword").post(
     (req, res) => new UserController().changePassword(req, res)
 );
 
+userRouter.route("/updateUser").post(
+    (req, res) => new UserController().updateUser(req, res)
+);
+
 export default userRouter;

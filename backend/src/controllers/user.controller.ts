@@ -114,4 +114,39 @@ export class UserController{
             };
         });
     }
+
+    updateUser(req: express.Request, res: express.Response) {
+        let oldEmail    = req.body.oldEmail;
+        let firstname   = req.body.firstname;
+        let lastname    = req.body.lastname;
+        let username    = req.body.username;
+        let phone       = req.body.phone;
+        let email       = req.body.email;
+        let image       = req.body.image;
+
+        User.findOne({"email": email}, (err, usr) => {
+            if (err) console.log(err);
+            else {
+                if(usr != null && oldEmail !== email){
+                    res.json({"message": "Email already in use."});
+                    return;
+                }
+
+                User.updateOne(
+                    {"username": username},
+                    {"$set": {
+                        "firstname" : firstname,
+                        "lastname"  : lastname,
+                        "phone"     : phone,
+                        "email"     : email,
+                        "image"     : image
+                    }},
+                    (resp) => {
+                        if (err) console.log(err);
+                        else res.json({"message": "Update successful."});
+                    }
+                );
+            }
+        });
+    }
 }
