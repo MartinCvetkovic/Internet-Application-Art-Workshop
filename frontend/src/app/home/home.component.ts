@@ -58,4 +58,10 @@ export class HomeComponent implements OnInit {
     this.canWriteWorkshops = this.allActiveWorkshops.length > 0;
   }
 
+  addCurrentWorkshop(_id: string) {
+    localStorage.setItem('currentWorkshop', JSON.stringify(this.allActiveWorkshops.find((w) => {
+      return w._id === _id;
+    })));
+  }
+
 }

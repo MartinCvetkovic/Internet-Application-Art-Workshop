@@ -1,1 +1,56 @@
-<p>workshop-details works!</p>
+<div class="d-flex justify-content-center">
+    <h2>Workshop details</h2>
+</div>
+<table class="table">
+    <tr>
+        <table>
+            <tr>
+                <td rowspan="2">
+                    <img src="{{workshop.main_img}}" style="width: 200px; height: 200px;">
+                </td>
+                <td>
+                    <h5>{{workshop.name}}</h5>
+                    <label>Date: {{workshop.date}}</label><br>
+                    <label>Place: {{workshop.place}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Description:</label><br>
+                    <label>{{workshop.long_description}}</label><br>
+                </td>
+            </tr>
+        </table>
+    </tr>
+</table>
+<h4>Gallery:</h4>
+<table class="text-center">
+    <tr class="row d-flex justify-content-between">
+        <td class="col-sm-12 col-md-6 col-lg-2 gallery_img" *ngIf="image_1 !== undefined">
+            <img src="{{image_1}}" width="150px" height="150px">
+        </td>
+        <td class="col-sm-12 col-md-6 col-lg-2 gallery_img" *ngIf="image_2 !== undefined">
+            <img src="{{image_2}}" width="150px" height="150px">
+        </td>
+        <td class="col-sm-12 col-md-6 col-lg-2 gallery_img" *ngIf="image_3 !== undefined">
+            <img src="{{image_3}}" width="150px" height="150px">
+        </td>
+        <td class="col-sm-12 col-md-6 col-lg-2 gallery_img" *ngIf="image_4 !== undefined">
+            <img src="{{image_4}}" width="150px" height="150px">
+        </td>
+        <td class="col-sm-12 col-md-6 col-lg-2 gallery_img" *ngIf="image_5 !== undefined">
+            <img src="{{image_5}}" width="150px" height="150px">
+        </td>
+    </tr>
+</table>
+<div class="d-flex justify-content-center">
+    <h4>Map</h4>
+</div>
+<div class="d-flex justify-content-center mt-2 mb-4">
+    <div style="text-decoration:none; overflow:hidden;max-width:100%;width:350px;height:350px;">
+        <div id="google-maps-display" style="height:100%; width:100%;max-width:100%;">
+            <iframe style="height:100%;width:100%;border:0;" frameborder="0" [src]="place_url"></iframe>
+        </div>
+        <style>#google-maps-display img{max-width:none!important;background:none!important;font-size: inherit;font-weight:inherit;}</style>
+    </div>
+</div>

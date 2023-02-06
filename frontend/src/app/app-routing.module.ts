@@ -6,10 +6,12 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { WorkshopDetailsComponent } from './workshop-details/workshop-details.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "profile", component: ProfileComponent},
+  {path: "workshopDetails", component: WorkshopDetailsComponent},
   {path: "login", component: LoginComponent},
   {path: "loginAdmin", component: LoginAdminComponent},
   {path: "register", component: RegisterComponent},

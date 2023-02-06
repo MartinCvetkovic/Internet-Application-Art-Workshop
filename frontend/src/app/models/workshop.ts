@@ -1,4 +1,5 @@
 export class Workshop {
+        _id:                string;
         owner:              string;
         name:               string;
         main_img:           string;
@@ -7,7 +8,7 @@ export class Workshop {
         short_description:  string;
         long_description:   string;
         map:                string;
-        images:             Array<Object>;
+        images:             Array<string>;
         likes:              Array<Object>;
         comments:           Array<Object>;
         chats:              Array<Object>;
