@@ -19,6 +19,8 @@ export class ProfileComponent implements OnInit {
     this.phone = this.user['phone'];
     this.email = this.user['email'];
     this.oldImage = this.image;
+
+    this.imageError = null;
   }
 
   firstname:          string;
@@ -99,6 +101,20 @@ export class ProfileComponent implements OnInit {
       if (resp["message"] === "Update successful.") {
         this.successInfo = resp["message"];
         this.errorMessage = null;
+        this.oldImage = this.image;
+        let user = {
+          username:   this.username,
+          password:   this.user['password'],
+          firstname:  this.firstname,
+          lastname:   this.lastname,
+          phone:      this.phone,
+          email:      this.email,
+          image:      this.image,
+          type:       this.user['type'],
+          status:     this.user['status'],
+          _id:        this.user['_id']
+        };
+        localStorage.setItem('user', JSON.stringify(user));
       } else {
         this.errorMessage = resp["message"];
       }

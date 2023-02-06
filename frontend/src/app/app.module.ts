@@ -11,6 +11,7 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { WorkshopDetailsComponent } from './workshop-details/workshop-details.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginAdminComponent,
     ChangePasswordComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    WorkshopDetailsComponent
   ],
   imports: [
     BrowserModule,
