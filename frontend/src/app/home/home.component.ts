@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
       this.allWorkshops = resp;
       this.allActiveWorkshops = [];
       this.allWorkshops.forEach(workshop => {
-        if (workshop.status === "active"/* && (new Date(workshop.date)).getTime() > Date.now()*/) {
+        if (workshop.status === "active" && (new Date(workshop.date)).getTime() > Date.now()) {
           this.allActiveWorkshops.push(workshop);
         }
       });

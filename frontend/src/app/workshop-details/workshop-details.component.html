@@ -5,7 +5,7 @@
     <tr>
         <table>
             <tr>
-                <td rowspan="3">
+                <td rowspan="4">
                     <img src="{{workshop.main_img}}" style="width: 200px; height: 200px;">
                 </td>
                 <td>
@@ -60,6 +60,20 @@
         <div id="google-maps-display" style="height:100%; width:100%;max-width:100%;">
             <iframe style="height:100%;width:100%;border:0;" frameborder="0" [src]="place_url"></iframe>
         </div>
-        <style>#google-maps-display img{max-width:none!important;background:none!important;font-size: inherit;font-weight:inherit;}</style>
+    </div>
+</div>
+<h4>Comments and likes:</h4>
+<div>
+    <button class="btn btn-primary">Like</button>
+    <label style="color: rgb(53, 150, 206);">&nbsp;&nbsp;&nbsp;<button class="btn btn-link">Show all likes</button></label>
+</div>
+<div class="comment-container mt-1 mb-4">
+    <div>
+        
+    </div>
+    <div class="d-flex comment-input justify-content-around align-self-end align-items-end p-2">
+        <label style="font-weight: bold;">Comment: </label>
+        <input class="form-control ml-5 mr-5" type="text">
+        <button class="btn btn-warning" style="border: 3px solid orange;">Send</button>
     </div>
 </div>
