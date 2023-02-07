@@ -65,7 +65,29 @@
 <h4>Comments and likes:</h4>
 <div>
     <button class="btn btn-primary">Like</button>
-    <label style="color: rgb(53, 150, 206);">&nbsp;&nbsp;&nbsp;<button class="btn btn-link">Show all likes</button></label>
+    <label style="color: rgb(53, 150, 206);">&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-link" data-toggle="modal" data-target="#showLikes">Show all likes</button>
+    </label>
+
+    <div class="modal fade" id="showLikes" tabindex="-1" role="dialog" aria-labelledby="showLikesLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="showLikesLabel">All likes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tr *ngFor="let l of likes">
+                            <td>{{l}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="comment-container mt-1 mb-4">
     <div>

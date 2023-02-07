@@ -14,6 +14,7 @@ export class WorkshopDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.workshop = JSON.parse(localStorage.getItem('currentWorkshop'));
+    this.likes = this.workshop.likes;
 
     this.image_1 = this.workshop.images.at(0);
     this.image_2 = this.workshop.images.at(1);
@@ -34,6 +35,7 @@ export class WorkshopDetailsComponent implements OnInit {
   }
 
   workshop: Workshop;
+  likes:    Array<string>;
   image_1:  string;
   image_2:  string;
   image_3:  string;

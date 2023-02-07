@@ -11,7 +11,7 @@ export class Workshop {
         long_description:   string;
         map:                string;
         images:             Array<string>;
-        likes:              Array<Object>;
+        likes:              Array<string>;
         comments:           Array<Object>;
         chats:              Array<Object>;
         available_spots:    Number;
