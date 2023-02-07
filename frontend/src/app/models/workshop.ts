@@ -1,3 +1,5 @@
+import { Participant } from "./participant";
+
 export class Workshop {
         _id:                string;
         owner:              string;
@@ -13,6 +15,6 @@ export class Workshop {
         comments:           Array<Object>;
         chats:              Array<Object>;
         available_spots:    Number;
-        participants:       Array<Object>;
+        participants:       Array<Participant>;
         status:             string;
 }

@@ -13,4 +13,12 @@ export class WorkshopService {
   getAllWorkshops() {
     return this.http.get(`${this.uri}/workshops/getAllWorkshops`);
   }
+
+  signupParticipant(_id, username) {
+    let data = {
+      _id: _id,
+      username: username
+    }
+    return this.http.post(`${this.uri}/workshops/signupParticipant`, data);
+  }
 }

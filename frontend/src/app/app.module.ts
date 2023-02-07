@@ -12,6 +12,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WorkshopDetailsComponent } from './workshop-details/workshop-details.component';
+import { ActiveWorkshopsComponent } from './active-workshops/active-workshops.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { WorkshopDetailsComponent } from './workshop-details/workshop-details.co
     ChangePasswordComponent,
     HomeComponent,
     ProfileComponent,
-    WorkshopDetailsComponent
+    WorkshopDetailsComponent,
+    ActiveWorkshopsComponent
   ],
   imports: [
     BrowserModule,

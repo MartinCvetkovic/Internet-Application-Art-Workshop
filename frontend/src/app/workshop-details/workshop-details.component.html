@@ -5,7 +5,7 @@
     <tr>
         <table>
             <tr>
-                <td rowspan="2">
+                <td rowspan="3">
                     <img src="{{workshop.main_img}}" style="width: 200px; height: 200px;">
                 </td>
                 <td>
@@ -18,6 +18,15 @@
                 <td>
                     <label>Description:</label><br>
                     <label>{{workshop.long_description}}</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Number of available spots: &nbsp;</label>
+                    <label>{{workshop.available_spots}}&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <button class="btn btn-success" *ngIf="workshop.available_spots > 0 && !signedUp" (click)="signUp()">Sign up</button>
+                    <button class="btn btn-success" *ngIf="workshop.available_spots > 0 && signedUp" disabled>Signed up</button>
+                    <button class="btn btn-success" *ngIf="workshop.available_spots == 0">Notify me when there's an open spot</button>
                 </td>
             </tr>
         </table>
