@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WorkshopDetailsComponent } from './workshop-details/workshop-details.component';
 import { ActiveWorkshopsComponent } from './active-workshops/active-workshops.component';
+import { AttendedWorkshopsComponent } from './attended-workshops/attended-workshops.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ActiveWorkshopsComponent } from './active-workshops/active-workshops.co
     HomeComponent,
     ProfileComponent,
     WorkshopDetailsComponent,
-    ActiveWorkshopsComponent
+    ActiveWorkshopsComponent,
+    AttendedWorkshopsComponent
   ],
   imports: [
     BrowserModule,

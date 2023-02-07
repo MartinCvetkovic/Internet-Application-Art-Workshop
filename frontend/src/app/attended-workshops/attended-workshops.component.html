@@ -1,0 +1,37 @@
+<div class="d-flex justify-content-center">
+    <h2>Attended workshops</h2>
+</div>
+<br>
+<div class="d-flex justify-content-center">
+    <table class="mb-2 text-center">
+        <tr>
+            <td class="pr-3"><button class="btn btn-primary" (click)="sortByDate()">Sort by date</button></td>
+            <td class="pl-3"><button class="btn btn-primary" (click)="sortByName()">Sort by name</button></td>
+            <td class="pl-3"><button class="btn btn-primary" (click)="sortByPlace()">Sort by place</button></td>
+        </tr>
+    </table>
+</div>
+<br>
+<table class="table" *ngIf="canWriteWorkshops; else noWorkshops">
+    <tr *ngFor="let w of allActiveWorkshops">
+        <table>
+            <tr>
+                <td rowspan="2">
+                    <img src="{{w.main_img}}" style="width: 200px; height: 200px;">
+                </td>
+                <td>
+                    <h5>{{w.name}}</h5>
+                    <label>Date: {{w.date}}</label><br>
+                    <label>Place: {{w.place}}</label>
+                </td>
+            </tr>
+        </table>
+    </tr>
+</table>
+
+<ng-template #noWorkshops>
+    <br><br><br><br>
+    <div class="d-flex justify-content-center">
+        <h5>There are no attended workshops found.</h5>
+    </div>
+</ng-template>
