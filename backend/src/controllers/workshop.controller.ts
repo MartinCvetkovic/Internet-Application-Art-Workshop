@@ -30,4 +30,44 @@ export class WorkshopController {
         )
     }
 
+    cancelSignup(req: express.Request, res: express.Response) {
+        Workshop.updateOne(
+            {"_id": req.body._id},
+            {
+                "$pull":
+                {
+                    "participants":
+                    {
+                        "username": req.body.username
+                    }
+                }
+            },
+            (err, w) => {
+                if(err) console.log(err);
+                else{
+                    if (req.body.status === "active") {
+                        Workshop.updateOne(
+                            {"_id": req.body._id},
+                            {
+                                "$inc":
+                                {
+                                    "available_spots": 1
+                                }
+                            },
+                            (err, w) => {
+                                if(err) console.log(err);
+                                else{
+                                    res.json({"message": "Succesful cancellation for workshop."});
+                                }
+                            }
+                        )
+                    }
+                    else {
+                        res.json({"message": "Succesful cancellation for workshop."});
+                    }
+                }
+            }
+        )
+    }
+
 }

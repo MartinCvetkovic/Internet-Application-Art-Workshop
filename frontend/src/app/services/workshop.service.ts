@@ -21,4 +21,13 @@ export class WorkshopService {
     }
     return this.http.post(`${this.uri}/workshops/signupParticipant`, data);
   }
+
+  cancelSignup(_id, username, status) {
+    let data = {
+      _id: _id,
+      username: username,
+      status: status
+    }
+    return this.http.post(`${this.uri}/workshops/cancelSignup`, data);
+  }
 }

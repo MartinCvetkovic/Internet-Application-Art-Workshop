@@ -1,1 +1,33 @@
-<p>active-workshops works!</p>
+<div class="d-flex justify-content-center">
+    <h2>My workshops</h2>
+</div>
+<table class="table" *ngIf="canWriteWorkshops; else noWorkshops">
+    <tr *ngFor="let w of allActiveWorkshops">
+        <table>
+            <tr>
+                <td rowspan="2">
+                    <img src="{{w.main_img}}" style="width: 200px; height: 200px;">
+                </td>
+                <td>
+                    <h5>{{w.name}}</h5>
+                    <label>Date: {{w.date}}</label><br>
+                    <label>Place: {{w.place}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Short description:</label><br>
+                    <label>{{w.short_description}}</label><br>
+                    <button class="btn btn-danger" [disabled]="disableSignup(w.date)" (click)="cancelSignup(w)">Cancel signup</button>
+                </td>
+            </tr>
+        </table>
+    </tr>
+</table>
+
+<ng-template #noWorkshops>
+    <br><br><br><br>
+    <div class="d-flex justify-content-center">
+        <h5>There are no active workshops found.</h5>
+    </div>
+</ng-template>

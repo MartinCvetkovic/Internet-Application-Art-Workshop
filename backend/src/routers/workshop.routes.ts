@@ -11,4 +11,8 @@ workshopRouter.route("/signupParticipant").post(
     (req, res) => new WorkshopController().signupParticipant(req, res)
 );
 
+workshopRouter.route("/cancelSignup").post(
+    (req, res) => new WorkshopController().cancelSignup(req, res)
+);
+
 export default workshopRouter;
