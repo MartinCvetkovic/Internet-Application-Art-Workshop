@@ -91,8 +91,12 @@
         </div>
     </div>
 </div>
+<div class="notif mb-4">
+    <span><i class="fas fa-heart">&nbsp;&nbsp;{{likes.length}}</i></span>
+        <span><i class="fas fa-comment">&nbsp;&nbsp;{{workshop.comments.length}}</i></span>
+</div>
 <div class="comment-container mt-1 mb-4">
-    <div class="no-scroll overflow-auto" style="width: 800px; height: 200px;">
+    <div class="no-scroll overflow-auto" style="width: 100%; height: 200px;">
         <table>
             <tr *ngFor="let c of workshop.comments">
                 <table class="m-3">

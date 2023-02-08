@@ -35,3 +35,28 @@
 .no-scroll::-webkit-scrollbar {
     display: none;
 }
+
+.notif {
+    position: relative;
+    width: 130px;
+    height: 50px;
+    background: #ed5959;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.notif span, .notif i{
+    color: white;
+}
+
+.notif::after {
+    position: absolute;
+    content: '';
+    width: 22px;
+    height: 22px;
+    background: #ed5959;
+    bottom: -22%;
+    transform: rotate(45deg);
+}
