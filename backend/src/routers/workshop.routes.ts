@@ -23,4 +23,8 @@ workshopRouter.route("/unlike").post(
     (req, res) => new WorkshopController().unlike(req, res)
 );
 
+workshopRouter.route("/sendComment").post(
+    (req, res) => new WorkshopController().sendComment(req, res)
+);
+
 export default workshopRouter;

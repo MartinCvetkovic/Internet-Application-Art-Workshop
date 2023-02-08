@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Comment } from '../models/comment';
 import { Workshop } from '../models/workshop';
 import { UserService } from '../services/user.service';
 import { WorkshopService } from '../services/workshop.service';
@@ -72,6 +73,26 @@ export class WorkshopDetailsComponent implements OnInit {
   signedUp: boolean;
   username: string;
   attendedBefore: boolean;
+
+  commentText:  string;
+
+  sendComment() {
+    let date = (new Date(Date.now() + 1 * 60 * 60 * 1000)).toISOString().slice(0, 19);
+
+    this.workshopService.sendComment(
+      this.workshop._id,
+      this.username,
+      this.commentText,
+      date
+    ).subscribe((resp) => {
+      this.workshop.comments.push({
+        "username": this.username,
+        "text": this.commentText,
+        "date": date
+      });
+      localStorage.setItem("currentWorkshop", JSON.stringify(this.workshop));
+    });
+  }
 
   signUp() {
     this.workshopService.signupParticipant(

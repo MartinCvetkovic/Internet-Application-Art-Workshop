@@ -46,4 +46,14 @@ export class WorkshopService {
     }
     return this.http.post(`${this.uri}/workshops/unlike`, data);
   }
+
+  sendComment(_id, username, text, date) {
+    let data = {
+      _id: _id,
+      username: username,
+      text: text,
+      date: date
+    }
+    return this.http.post(`${this.uri}/workshops/sendComment`, data);
+  }
 }
