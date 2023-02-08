@@ -50,31 +50,34 @@
                     {{c['text']}}
                 </td>
                 <td>
-                    <button class="btn btn-primary">Edit</button>
-                    
-                    <!-- data-toggle="modal" data-target="#edit{{w.name}}{{c['date']}}" 
-                    <div class="modal fade" id="edit{{w.name}}{{c['date']}}" tabindex="-1" role="dialog" aria-labelledby="showEdit{{w.name}}{{c['date']}}" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="showEdit{{w.name}}{{c['date']}}">All likes</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <input type="text">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    -->
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#editModal" (click)="setEditText(w._id, w.date, c['text'])">
+                        Edit
+                    </button>
                 </td>
-                <td><button class="btn btn-danger" (click)="delete(w._id, c.date)">Delete</button></td>
+                <td>
+                    <button class="btn btn-danger" (click)="delete(w._id, c.date)">Delete</button>
+                </td>
             </tr>
         </table>
     </tr>
 </table>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="showEditModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showEditModal">Edit comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="display: flex;">
+                <input class="form-control mr-3" type="text" name="editText" [(ngModel)]="editText">
+                <button class="btn btn-primary" (click)="edit()">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <ng-template #noLikedWorkshops>
     <br><br>

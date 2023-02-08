@@ -150,4 +150,39 @@ export class WorkshopController {
             }
         )
     }
+
+    editComment(req: express.Request, res: express.Response) {
+        Workshop.updateOne(
+            {"_id": req.body._id},
+            {
+                "$set":
+                {
+                    "comments.$[comment].text":
+                    {
+                        "text": req.body.text
+                    }
+                }
+            },
+            {
+                arrayFilters:
+                [
+                    {
+                        "$and":
+                        [
+                            {
+                                "comment.username": req.body.username,
+                                "comment.date": req.body.date
+                            }
+                        ]
+                    }
+                ]
+            },
+            (err, w) => {
+                if(err) console.log(err);
+                else{
+                    res.json({"message": "Successfuly edited the comment."});
+                }
+            }
+        )
+    }
 }

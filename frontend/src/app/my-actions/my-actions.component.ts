@@ -48,6 +48,10 @@ export class MyActionsComponent implements OnInit {
   username:                   string;
   canWriteLikedWorkshops:     boolean;
   canWriteCommentedWorkshops: boolean;
+  
+  editText: string;
+  _id: string;
+  date: string;
 
   
   unlike(workshop: Workshop) {
@@ -66,6 +70,23 @@ export class MyActionsComponent implements OnInit {
       date
     ).subscribe((resp) => {
       location.reload()
+    });
+  }
+
+  setEditText(_id, date, editText: string) {
+    this.editText = editText;
+    this._id = _id;
+    this.date = date;
+  }
+
+  edit() {
+    this.workshopService.editComment(
+      this._id,
+      this.username,
+      this.date,
+      this.editText
+    ).subscribe((resp) => {
+      location.reload();
     });
   }
 
