@@ -14,6 +14,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { WorkshopDetailsComponent } from './workshop-details/workshop-details.component';
 import { ActiveWorkshopsComponent } from './active-workshops/active-workshops.component';
 import { AttendedWorkshopsComponent } from './attended-workshops/attended-workshops.component';
+import { MyActionsComponent } from './my-actions/my-actions.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AttendedWorkshopsComponent } from './attended-workshops/attended-worksh
     ProfileComponent,
     WorkshopDetailsComponent,
     ActiveWorkshopsComponent,
-    AttendedWorkshopsComponent
+    AttendedWorkshopsComponent,
+    MyActionsComponent
   ],
   imports: [
     BrowserModule,

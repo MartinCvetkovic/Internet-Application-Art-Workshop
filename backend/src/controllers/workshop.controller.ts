@@ -128,4 +128,26 @@ export class WorkshopController {
             }
         )
     }
+
+    deleteComment(req: express.Request, res: express.Response) {
+        Workshop.updateOne(
+            {"_id": req.body._id},
+            {
+                "$pull":
+                {
+                    "comments":
+                    {
+                        "username": req.body.username,
+                        "date": req.body.date
+                    }
+                }
+            },
+            (err, w) => {
+                if(err) console.log(err);
+                else{
+                    res.json({"message": "Successfuly deleted comment."});
+                }
+            }
+        )
+    }
 }

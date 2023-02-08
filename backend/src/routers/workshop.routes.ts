@@ -27,4 +27,8 @@ workshopRouter.route("/sendComment").post(
     (req, res) => new WorkshopController().sendComment(req, res)
 );
 
+workshopRouter.route("/deleteComment").post(
+    (req, res) => new WorkshopController().deleteComment(req, res)
+);
+
 export default workshopRouter;

@@ -56,4 +56,13 @@ export class WorkshopService {
     }
     return this.http.post(`${this.uri}/workshops/sendComment`, data);
   }
+
+  deleteComment(_id, username, date) {
+    let data = {
+      _id: _id,
+      username: username,
+      date: date
+    }
+    return this.http.post(`${this.uri}/workshops/deleteComment`, data);
+  }
 }
