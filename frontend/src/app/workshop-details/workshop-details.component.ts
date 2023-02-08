@@ -32,7 +32,26 @@ export class WorkshopDetailsComponent implements OnInit {
         this.signedUp = true;
       }
     });
+
+    this.workshopService.getAllWorkshops().subscribe((resp: Array<Workshop>)=>{
+      this.allWorkshops = resp;
+      this.allActiveWorkshops = [];
+      this.allWorkshops.forEach(workshop => {
+        if (workshop.status === "active"
+        && workshop.participants.find((p)=> {
+          return p.username === this.username && p.status === "active";
+        }) !== undefined
+        && (new Date(workshop.date)).getTime() < Date.now()) {
+          this.allActiveWorkshops.push(workshop);
+        }
+
+        this.attendedBefore = this.hasAttendedBefore();
+      });
+    })
   }
+
+  allWorkshops:           Array<Workshop>;
+  allActiveWorkshops:     Array<Workshop>;
 
   workshop: Workshop;
   likes:    Array<string>;
@@ -46,6 +65,7 @@ export class WorkshopDetailsComponent implements OnInit {
 
   signedUp: boolean;
   username: string;
+  attendedBefore: boolean;
 
   signUp() {
     this.workshopService.signupParticipant(
@@ -59,6 +79,42 @@ export class WorkshopDetailsComponent implements OnInit {
       });
       localStorage.setItem("currentWorkshop", JSON.stringify(this.workshop));
     });
+  }
+
+  hasAttendedBefore(): boolean {
+    let attended = false;
+    this.allWorkshops.forEach(workshop => {
+      if (workshop._id !== this.workshop._id && workshop.name === this.workshop.name && workshop.participants.find((p)=> {
+        return p.username === this.username && p.status === "active";
+      }) !== undefined
+      && (new Date(workshop.date)).getTime() < Date.now()) {
+        attended = true;
+      }
+    });
+    return attended;
+  }
+
+  like() {
+    this.workshopService.like(this.workshop._id, this.username).subscribe((resp) => {
+      this.workshop.likes.push(this.username);
+      localStorage.setItem("currentWorkshop", JSON.stringify(this.workshop));
+    });
+  }
+
+  unlike() {
+    this.workshopService.unlike(this.workshop._id, this.username).subscribe((resp) => {
+      this.workshop.likes = this.workshop.likes.filter((val) => {
+        return val !== this.username;
+      });
+      localStorage.setItem("currentWorkshop", JSON.stringify(this.workshop));
+      location.reload();
+    });
+  }
+
+  hasLiked() {
+    return this.workshop.likes.find((p)=> {
+      return p === this.username;
+    }) !== undefined;
   }
   
 }

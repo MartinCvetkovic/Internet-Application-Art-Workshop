@@ -70,4 +70,40 @@ export class WorkshopController {
         )
     }
 
+    like(req: express.Request, res: express.Response) {
+        Workshop.updateOne(
+            {"_id": req.body._id},
+            {
+                "$push":
+                {
+                    "likes": req.body.username
+                }
+            },
+            (err, w) => {
+                if(err) console.log(err);
+                else{
+                    res.json({"message": "Successfuly liked."});
+                }
+            }
+        )
+    }
+
+    unlike(req: express.Request, res: express.Response) {
+        Workshop.updateOne(
+            {"_id": req.body._id},
+            {
+                "$pull":
+                {
+                    "likes": req.body.username
+                }
+            },
+            (err, w) => {
+                if(err) console.log(err);
+                else{
+                    res.json({"message": "Successfuly unliked."});
+                }
+            }
+        )
+    }
+
 }

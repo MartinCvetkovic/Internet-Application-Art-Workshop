@@ -30,4 +30,20 @@ export class WorkshopService {
     }
     return this.http.post(`${this.uri}/workshops/cancelSignup`, data);
   }
+
+  like(_id, username) {
+    let data = {
+      _id: _id,
+      username: username
+    }
+    return this.http.post(`${this.uri}/workshops/like`, data);
+  }
+
+  unlike(_id, username) {
+    let data = {
+      _id: _id,
+      username: username
+    }
+    return this.http.post(`${this.uri}/workshops/unlike`, data);
+  }
 }

@@ -62,9 +62,11 @@
         </div>
     </div>
 </div>
+
 <h4>Comments and likes:</h4>
 <div>
-    <button class="btn btn-primary">Like</button>
+    <button class="btn btn-primary" [disabled]="!attendedBefore" (click)="like()" *ngIf="!hasLiked()">Like</button>
+    <button class="btn btn-primary" [disabled]="!attendedBefore" (click)="unlike()" *ngIf="hasLiked()">Unlike</button>
     <label style="color: rgb(53, 150, 206);">&nbsp;&nbsp;&nbsp;
         <button class="btn btn-link" data-toggle="modal" data-target="#showLikes">Show all likes</button>
     </label>
@@ -96,6 +98,6 @@
     <div class="d-flex comment-input justify-content-around align-self-end align-items-end p-2">
         <label style="font-weight: bold;">Comment: </label>
         <input class="form-control ml-5 mr-5" type="text">
-        <button class="btn btn-warning" style="border: 3px solid orange;">Send</button>
+        <button class="btn btn-warning" style="border: 3px solid orange;" [disabled]="!attendedBefore"><b>Send</b></button>
     </div>
 </div>
