@@ -92,8 +92,24 @@
     </div>
 </div>
 <div class="comment-container mt-1 mb-4">
-    <div>
-        
+    <div class="no-scroll overflow-auto" style="width: 800px; height: 200px;">
+        <table>
+            <tr *ngFor="let c of workshop.comments">
+                <table class="m-3">
+                    <tr>
+                        <td rowspan="3">
+                            <img src="{{getPfp(c.username)}}" class="rounded-circle mr-3" width="50px" height="50px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>{{c.username}},&nbsp;</b>{{c.date}}</td>
+                    </tr>
+                    <tr>
+                        <td><div class="comment-text p-2">{{c.text}}</div></td>
+                    </tr>
+                </table>
+            </tr>
+        </table>
     </div>
     <div class="d-flex comment-input justify-content-around align-self-end align-items-end p-2">
         <label style="font-weight: bold;">Comment: </label>

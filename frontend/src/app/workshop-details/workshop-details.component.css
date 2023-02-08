@@ -18,3 +18,20 @@
     border-top: 3px solid black;
     width: 100%;
 }
+
+.comment-text {
+    background-color: lightgray;
+    border: 3px solid gray;
+    border-radius: 10%;
+    border-collapse: inherit;
+}
+
+.no-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll; 
+}
+
+.no-scroll::-webkit-scrollbar {
+    display: none;
+}

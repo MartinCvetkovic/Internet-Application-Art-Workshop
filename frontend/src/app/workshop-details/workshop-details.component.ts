@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Workshop } from '../models/workshop';
+import { UserService } from '../services/user.service';
 import { WorkshopService } from '../services/workshop.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { WorkshopService } from '../services/workshop.service';
 })
 export class WorkshopDetailsComponent implements OnInit {
 
-  constructor(public sanitizer: DomSanitizer, private workshopService: WorkshopService) { }
+  constructor(public sanitizer: DomSanitizer, private workshopService: WorkshopService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.workshop = JSON.parse(localStorage.getItem('currentWorkshop'));
@@ -47,11 +48,16 @@ export class WorkshopDetailsComponent implements OnInit {
 
         this.attendedBefore = this.hasAttendedBefore();
       });
-    })
+    });
+
+    this.userService.getAllUsers().subscribe((resp: Array<Object>) => {
+      this.allUsers = resp;
+    });
   }
 
   allWorkshops:           Array<Workshop>;
   allActiveWorkshops:     Array<Workshop>;
+  allUsers:               Array<Object>;
 
   workshop: Workshop;
   likes:    Array<string>;
@@ -115,6 +121,12 @@ export class WorkshopDetailsComponent implements OnInit {
     return this.workshop.likes.find((p)=> {
       return p === this.username;
     }) !== undefined;
+  }
+
+  getPfp(username: string) {
+    return this.allUsers.find((u) => {
+      return u['username'] === username;
+    })['image'];
   }
   
 }

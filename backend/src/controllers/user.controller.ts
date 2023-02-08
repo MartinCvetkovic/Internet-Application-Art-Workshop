@@ -3,6 +3,22 @@ import Organisation from "../models/organisation";
 import User from "../models/user"
 
 export class UserController{
+
+    getAllUsers(req: express.Request, res: express.Response) {
+        let username = req.body.username;
+        let password = req.body.password;
+
+        User.find({}, (err, user) => {
+            if (err) console.log(err);
+            else {
+                if(user != null)
+                    res.json(user);
+                else
+                    res.json({"message": "No users."})
+            };
+        });
+    }
+
     login(req: express.Request, res: express.Response) {
         let username = req.body.username;
         let password = req.body.password;
@@ -13,7 +29,7 @@ export class UserController{
                 if(user != null)
                     res.json(user);
                 else
-                    res.json({"message": "Wrong username or password."})
+                    res.json({"message": "Wrong username or password."});
             };
         });
     }

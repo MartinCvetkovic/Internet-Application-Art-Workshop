@@ -90,4 +90,8 @@ export class UserService {
 
     return this.http.post(`${this.uri}/users/updateUser`, data);
   }
+
+  getAllUsers() {
+    return this.http.post(`${this.uri}/users/getAllUsers`, {});
+  }
 }

@@ -23,4 +23,8 @@ userRouter.route("/updateUser").post(
     (req, res) => new UserController().updateUser(req, res)
 );
 
+userRouter.route("/getAllUsers").post(
+    (req, res) => new UserController().getAllUsers(req, res)
+);
+
 export default userRouter;

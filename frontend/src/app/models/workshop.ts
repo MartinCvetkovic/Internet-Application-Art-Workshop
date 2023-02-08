@@ -1,3 +1,4 @@
+import { Comment } from "./comment";
 import { Participant } from "./participant";
 
 export class Workshop {
@@ -12,7 +13,7 @@ export class Workshop {
         map:                string;
         images:             Array<string>;
         likes:              Array<string>;
-        comments:           Array<Object>;
+        comments:           Array<Comment>;
         chats:              Array<Object>;
         available_spots:    Number;
         participants:       Array<Participant>;
