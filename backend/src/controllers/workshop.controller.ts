@@ -152,28 +152,20 @@ export class WorkshopController {
     }
 
     editComment(req: express.Request, res: express.Response) {
-        Workshop.updateOne(
+        Workshop.findOneAndUpdate(
             {"_id": req.body._id},
             {
                 "$set":
                 {
-                    "comments.$[comment].text":
-                    {
-                        "text": req.body.text
-                    }
+                    "comments.$[comment].text": req.body.text
                 }
             },
             {
                 arrayFilters:
                 [
                     {
-                        "$and":
-                        [
-                            {
-                                "comment.username": req.body.username,
-                                "comment.date": req.body.date
-                            }
-                        ]
+                        "comment.username": req.body.username,
+                        "comment.date": req.body.date
                     }
                 ]
             },
