@@ -13,7 +13,8 @@
         <table class="mb-2 text-center">
             <tr>
                 <td class="pr-3"><button class="btn btn-primary" (click)="sortByDate()">Sort by date</button></td>
-                <td class="pl-3"><button class="btn btn-primary" (click)="sortByName()">Sort by name</button></td>
+                <td class="pl-3 pr-3"><button class="btn btn-primary" (click)="sortByName()">Sort by name</button></td>
+                <td class="pl-3"><button class="btn btn-warning" data-toggle="modal" data-target="#top5Modal">Top 5</button></td>
             </tr>
         </table>
     </div>
@@ -45,6 +46,34 @@
         </table>
     </tr>
 </table>
+
+<div class="modal fade" id="top5Modal" tabindex="-1" role="dialog" aria-labelledby="showTop5Modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showTop5Modal">Top 5 workshops</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="display: flex;">
+                <table style="border-spacing: 10px;">
+                    <tr *ngFor="let t5 of top5Workshops">
+                        <td>
+                            <img src="{{t5.main_img}}" style="width: 150px; height: 150px;">
+                        </td>
+                        <td>
+                            <h5>{{t5.name}}</h5>
+                            <label>Date: {{t5.date}}</label><br>
+                            <label>Place: {{t5.place}}</label><br>
+                            <label>Likes: {{t5.likes.length}}</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 <ng-template #noWorkshops>
     <br><br><br><br>

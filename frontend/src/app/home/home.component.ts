@@ -23,6 +23,12 @@ export class HomeComponent implements OnInit {
       });
       this.allActiveWorkshopsCopy = this.allActiveWorkshops;
       this.canWriteWorkshops = this.allActiveWorkshops.length > 0;
+      
+      this.top5Workshops = structuredClone(this.allActiveWorkshops);
+      this.top5Workshops.sort((w1, w2)=>{
+        return w2.likes.length - w1.likes.length;
+      });
+      this.top5Workshops = this.top5Workshops.slice(0, 5);
     })
   }
 
@@ -33,6 +39,8 @@ export class HomeComponent implements OnInit {
   nameParam:              string;
   placeParam:             string;
   canWriteWorkshops:      boolean;
+
+  top5Workshops:          Array<Workshop>;
 
   sortByDate() {
     this.allActiveWorkshops.sort((w1, w2)=>{
