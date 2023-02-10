@@ -35,4 +35,8 @@ workshopRouter.route("/editComment").post(
     (req, res) => new WorkshopController().editComment(req, res)
 );
 
+workshopRouter.route("/sendMessage").post(
+    (req, res) => new WorkshopController().sendMessage(req, res)
+);
+
 export default workshopRouter;

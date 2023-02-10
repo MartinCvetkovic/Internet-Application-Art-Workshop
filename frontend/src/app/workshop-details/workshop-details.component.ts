@@ -164,7 +164,18 @@ export class WorkshopDetailsComponent implements OnInit {
   }
 
   sendMessage() {
+    let date = (new Date(Date.now() + 1 * 60 * 60 * 1000)).toISOString().slice(0, 19);
 
+    this.workshopService.sendMessage(
+      this.workshop._id,
+      this.username,
+      date,
+      this.messageText
+    ).subscribe((resp: any) => {
+      this.workshop = resp;
+      localStorage.setItem("currentWorkshop", JSON.stringify(this.workshop));
+      this.ngOnInit();
+    });
   }
   
 }

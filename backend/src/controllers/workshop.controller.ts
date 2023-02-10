@@ -178,26 +178,87 @@ export class WorkshopController {
         )
     }
 
-    /*sendMessage(req: express.Request, res: express.Response) {
-        Workshop.updateOne(
-            {"_id": req.body._id},
+    sendMessage(req: express.Request, res: express.Response) {
+        Workshop.findOne(
             {
-                "$push":
-                {
-                    "chats":
+                "_id": req.body._id
+            },
+            {},
+            {
+                arrayFilters:
+                [
                     {
-                        "username": req.body.username,
-                        "date": req.body.date,
-                        "text": req.body.text
+                        "chats.$.0.username": req.body.username
                     }
-                }
+                ]
             },
             (err, w) => {
                 if(err) console.log(err);
                 else{
-                    res.json({"message": "Successfuly commented."});
+                    if (w === null) {
+                        Workshop.findOneAndUpdate(
+                            {
+                                "_id": req.body._id
+                            },
+                            {
+                                "$push":
+                                {
+                                    "chats":
+                                    [
+                                        {
+                                            "username": req.body.username,
+                                            "date": req.body.date,
+                                            "text": req.body.text
+                                        }
+                                    ]
+                                }
+                            },
+                            (err, w) => {
+                                if(err) console.log(err);
+                                else{
+                                    Workshop.findById(req.body._id, (err, w) => {
+                                        res.json(w);
+                                    });
+                                }
+                            }
+                        );
+                    }
+                    else {
+                        Workshop.findOneAndUpdate(
+                            {
+                                "_id": req.body._id
+                            },
+                            {
+                                "$push":
+                                {
+                                    "chats.$[chat]":
+                                    {
+                                        "username": req.body.username,
+                                        "date": req.body.date,
+                                        "text": req.body.text
+                                    }
+                                }
+                            },
+                            {
+                                arrayFilters:
+                                [
+                                    {
+                                        "chat.0.username": req.body.username
+                                    }
+                                ]
+                            },
+                            (err, w) => {
+                                if(err) console.log(err);
+                                else{
+                                    Workshop.findById(req.body._id, (err, w) => {
+                                        res.json(w);
+                                    });
+                                }
+                            }
+                        );
+                    }
                 }
             }
         )
-    }*/
+    }
 }
