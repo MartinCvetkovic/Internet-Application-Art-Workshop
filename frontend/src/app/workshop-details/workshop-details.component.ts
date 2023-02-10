@@ -54,8 +54,11 @@ export class WorkshopDetailsComponent implements OnInit {
     this.userService.getAllUsers().subscribe((resp: Array<Object>) => {
       this.allUsers = resp;
     });
+
+    this.myChat = this.getMyChat();
   }
 
+  myChat: any;
   allWorkshops:           Array<Workshop>;
   allActiveWorkshops:     Array<Workshop>;
   allUsers:               Array<Object>;
@@ -75,6 +78,7 @@ export class WorkshopDetailsComponent implements OnInit {
   attendedBefore: boolean;
 
   commentText:  string;
+  messageText:  string;
 
   sendComment() {
     let date = (new Date(Date.now() + 1 * 60 * 60 * 1000)).toISOString().slice(0, 19);
@@ -148,6 +152,19 @@ export class WorkshopDetailsComponent implements OnInit {
     return this.allUsers.find((u) => {
       return u['username'] === username;
     })['image'];
+  }
+
+  getMyChat() {
+    for (const chat of this.workshop.chats) {
+      if(chat[0]['username'] === this.username) {
+        return chat;
+      }
+    }
+    return [];
+  }
+
+  sendMessage() {
+
   }
   
 }

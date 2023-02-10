@@ -177,4 +177,27 @@ export class WorkshopController {
             }
         )
     }
+
+    /*sendMessage(req: express.Request, res: express.Response) {
+        Workshop.updateOne(
+            {"_id": req.body._id},
+            {
+                "$push":
+                {
+                    "chats":
+                    {
+                        "username": req.body.username,
+                        "date": req.body.date,
+                        "text": req.body.text
+                    }
+                }
+            },
+            (err, w) => {
+                if(err) console.log(err);
+                else{
+                    res.json({"message": "Successfuly commented."});
+                }
+            }
+        )
+    }*/
 }
