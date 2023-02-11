@@ -85,4 +85,15 @@ export class WorkshopService {
     }
     return this.http.post(`${this.uri}/workshops/sendMessage`, data);
   }
+
+  sendMessageOwner(_id, username, date, text, owner) {
+    let data = {
+      _id: _id,
+      username: username,
+      date: date,
+      text: text,
+      owner: owner
+    }
+    return this.http.post(`${this.uri}/workshops/sendMessageOwner`, data);
+  }
 }

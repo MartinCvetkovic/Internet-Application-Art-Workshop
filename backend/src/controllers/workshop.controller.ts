@@ -261,4 +261,61 @@ export class WorkshopController {
             }
         )
     }
+
+    
+    sendMessageOwner(req: express.Request, res: express.Response) {
+        Workshop.findOne(
+            {
+                "_id": req.body._id
+            },
+            {},
+            {
+                arrayFilters:
+                [
+                    {
+                        "chats.$.0.username": req.body.username
+                    }
+                ]
+            },
+            (err, w) => {
+                if(err) console.log(err);
+                else{
+                    if (w !== null) {
+                        Workshop.findOneAndUpdate(
+                            {
+                                "_id": req.body._id
+                            },
+                            {
+                                "$push":
+                                {
+                                    "chats.$[chat]":
+                                    {
+                                        "username": req.body.owner,
+                                        "date": req.body.date,
+                                        "text": req.body.text
+                                    }
+                                }
+                            },
+                            {
+                                arrayFilters:
+                                [
+                                    {
+                                        "chat.0.username": req.body.username
+                                    }
+                                ]
+                            },
+                            (err, w) => {
+                                if(err) console.log(err);
+                                else{
+                                    Workshop.findById(req.body._id, (err, w) => {
+                                        res.json(w);
+                                    });
+                                }
+                            }
+                        );
+                    }
+                }
+            }
+        )
+    }
 }

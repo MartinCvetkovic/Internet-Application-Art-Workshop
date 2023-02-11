@@ -8,9 +8,11 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { LoginComponent } from './login/login.component';
 import { MyActionsComponent } from './my-actions/my-actions.component';
 import { MyMessagesComponent } from './my-messages/my-messages.component';
+import { MyWorkshopsComponent } from './my-workshops/my-workshops.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { WorkshopDetailsComponent } from './workshop-details/workshop-details.component';
+import { WorkshopMessagesComponent } from './workshop-messages/workshop-messages.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path: "loginAdmin", component: LoginAdminComponent},
   {path: "register", component: RegisterComponent},
   {path: "changePassword", component: ChangePasswordComponent},
+  {path: "myWorkshops", component: MyWorkshopsComponent},
+  {path: "myWorkshops/workshopMessages", component: WorkshopMessagesComponent},
 ];
 
 @NgModule({

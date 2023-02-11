@@ -23,7 +23,7 @@
             <a routerLink=""><button class="btn btn-outline-info">Become organiser</button></a>
         </div>
         <div class="col-sm-12 d-flex justify-content-around" *ngIf="user !== null && user['type'] === 'organiser'">
-            <a routerLink=""><button class="btn btn-outline-info">Profile</button></a>
+            <a routerLink="myWorkshops"><button class="btn btn-outline-info">Profile</button></a>
             <a routerLink=""><button class="btn btn-outline-info">Workshops</button></a>
         </div>
         <div class="col-sm-12 d-flex justify-content-around" *ngIf="user !== null && user['type'] === 'admin'">

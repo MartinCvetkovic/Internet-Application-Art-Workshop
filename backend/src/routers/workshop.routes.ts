@@ -39,4 +39,8 @@ workshopRouter.route("/sendMessage").post(
     (req, res) => new WorkshopController().sendMessage(req, res)
 );
 
+workshopRouter.route("/sendMessageOwner").post(
+    (req, res) => new WorkshopController().sendMessageOwner(req, res)
+);
+
 export default workshopRouter;

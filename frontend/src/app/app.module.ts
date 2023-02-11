@@ -16,6 +16,8 @@ import { ActiveWorkshopsComponent } from './active-workshops/active-workshops.co
 import { AttendedWorkshopsComponent } from './attended-workshops/attended-workshops.component';
 import { MyActionsComponent } from './my-actions/my-actions.component';
 import { MyMessagesComponent } from './my-messages/my-messages.component';
+import { MyWorkshopsComponent } from './my-workshops/my-workshops.component';
+import { WorkshopMessagesComponent } from './workshop-messages/workshop-messages.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { MyMessagesComponent } from './my-messages/my-messages.component';
     ActiveWorkshopsComponent,
     AttendedWorkshopsComponent,
     MyActionsComponent,
-    MyMessagesComponent
+    MyMessagesComponent,
+    MyWorkshopsComponent,
+    WorkshopMessagesComponent
   ],
   imports: [
     BrowserModule,
