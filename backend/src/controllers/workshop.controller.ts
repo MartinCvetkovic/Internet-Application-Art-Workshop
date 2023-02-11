@@ -318,4 +318,28 @@ export class WorkshopController {
             }
         )
     }
+
+    newWorkshop(req: express.Request, res: express.Response) {
+        let workshop = new Workshop({
+            owner: req.body.owner,
+            name: req.body.name,
+            main_img: req.body.main_img,
+            date: req.body.date,
+            place: req.body.place,
+            short_description: req.body.short_description,
+            long_description: req.body.long_description,
+            images: req.body.images,
+            likes: [],
+            comments: [],
+            chats: [],
+            available_spots: req.body.available_spots,
+            participants: [],
+            status: "new"
+        });
+        workshop.save().then(user=>{
+            res.status(200).json({"message": "Workshop created successfully."});
+        }).catch(err => {
+            res.status(400).json({"message": "Error creating workshop."});
+        });
+    }
 }

@@ -96,4 +96,29 @@ export class WorkshopService {
     }
     return this.http.post(`${this.uri}/workshops/sendMessageOwner`, data);
   }
+
+  newWorkshop(
+    owner,
+    name,
+    main_img,
+    date,
+    place,
+    short_description,
+    long_description,
+    images,
+    available_spots
+  ) {
+    let data = {
+      owner: owner,
+      name: name,
+      main_img: main_img,
+      date: date,
+      place: place,
+      short_description: short_description,
+      long_description: long_description,
+      images: images,
+      available_spots: available_spots
+    }
+    return this.http.post(`${this.uri}/workshops/newWorkshop`, data);
+  }
 }

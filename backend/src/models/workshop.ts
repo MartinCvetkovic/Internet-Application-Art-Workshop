@@ -11,7 +11,6 @@ let Workshop = new Schema(
         place:              {type: String},
         short_description:  {type: String},
         long_description:   {type: String},
-        map:                {type: String},
         images:             {type: Array},
         likes:              {type: Array},
         comments:           {type: Array},
