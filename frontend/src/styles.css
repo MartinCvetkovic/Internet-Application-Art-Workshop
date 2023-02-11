@@ -7,3 +7,44 @@
 .success {
     color: green;
 }
+
+.comment-container {
+    height: 300px;
+    background-color: white;
+    border-radius: 5%;
+    border: 3px solid black;
+    position: relative;
+}
+
+.comment-input {
+    position: absolute;
+    bottom: 0px;
+    border-top: 3px solid black;
+    width: 100%;
+}
+
+.comment-text {
+    background-color: lightgray;
+    border: 3px solid gray;
+    border-radius: 10%;
+    border-collapse: inherit;
+}
+
+.no-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll; 
+}
+
+.no-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.no-border {
+    border: none;
+    border-collapse: collapse;
+    outline: none;
+    border-top: 0 !important;
+    padding: 5px !important;
+    margin: 5px !important;
+}

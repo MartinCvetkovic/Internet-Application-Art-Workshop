@@ -15,6 +15,7 @@ import { WorkshopDetailsComponent } from './workshop-details/workshop-details.co
 import { ActiveWorkshopsComponent } from './active-workshops/active-workshops.component';
 import { AttendedWorkshopsComponent } from './attended-workshops/attended-workshops.component';
 import { MyActionsComponent } from './my-actions/my-actions.component';
+import { MyMessagesComponent } from './my-messages/my-messages.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MyActionsComponent } from './my-actions/my-actions.component';
     WorkshopDetailsComponent,
     ActiveWorkshopsComponent,
     AttendedWorkshopsComponent,
-    MyActionsComponent
+    MyActionsComponent,
+    MyMessagesComponent
   ],
   imports: [
     BrowserModule,

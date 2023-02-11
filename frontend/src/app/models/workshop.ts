@@ -14,7 +14,7 @@ export class Workshop {
         images:             Array<string>;
         likes:              Array<string>;
         comments:           Array<Comment>;
-        chats:              Array<Object>;
+        chats:              Array<Array<Object>>;
         available_spots:    Number;
         participants:       Array<Participant>;
         status:             string;
