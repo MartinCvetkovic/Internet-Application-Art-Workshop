@@ -92,7 +92,6 @@ export class NewWorkshopComponent implements OnInit {
 
   addWorkshop() {
     this.successInfo = null;
-    console.log(this.date);console.log(this.time)
 
     if (
       this.name === undefined || this.name === "" ||
@@ -147,7 +146,7 @@ export class NewWorkshopComponent implements OnInit {
         this.short_description = w['short_description'];
         this.long_description = w['long_description'];
         this.main_img = w['main_img'];
-        this.gallery_images = w['gallery_images'];
+        this.gallery_images = w['images'];
         this.available_spots = w.available_spots.valueOf();
       };
     }

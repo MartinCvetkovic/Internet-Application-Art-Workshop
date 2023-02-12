@@ -39,7 +39,7 @@ export class MyWorkshopsComponent implements OnInit {
 
   downloadTemplate(workshop: Workshop) {
     let data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(workshop));
-    var downloadTemplate = document.getElementById('downloadTemplate');
+    var downloadTemplate = document.getElementById('downloadTemplate' + workshop._id);
     downloadTemplate.setAttribute("href", data);
     downloadTemplate.setAttribute("download", "template.json");
   }
