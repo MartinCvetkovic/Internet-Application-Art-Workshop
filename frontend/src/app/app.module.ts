@@ -20,6 +20,7 @@ import { MyWorkshopsComponent } from './my-workshops/my-workshops.component';
 import { WorkshopMessagesComponent } from './workshop-messages/workshop-messages.component';
 import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
 import { NewWorkshopComponent } from './new-workshop/new-workshop.component';
+import { ShowSignupsComponent } from './show-signups/show-signups.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { NewWorkshopComponent } from './new-workshop/new-workshop.component';
     MyWorkshopsComponent,
     WorkshopMessagesComponent,
     EditWorkshopComponent,
-    NewWorkshopComponent
+    NewWorkshopComponent,
+    ShowSignupsComponent
   ],
   imports: [
     BrowserModule,

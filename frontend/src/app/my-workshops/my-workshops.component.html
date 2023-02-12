@@ -6,7 +6,7 @@
     <tr *ngFor="let w of allActiveWorkshops">
         <table>
             <tr>
-                <td rowspan="2">
+                <td rowspan="3">
                     <img src="{{w.main_img}}" style="width: 200px; height: 200px;">
                 </td>
                 <td>
@@ -28,6 +28,18 @@
                             <a id="{{'downloadTemplate' + w._id}}" style="text-decoration: none; color: white;">
                                 Download template
                             </a>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="d-flex justify-content-around">
+                        <button class="btn btn-primary" routerLink="showSignups" (click)="addCurrentWorkshop(w._id)">
+                            Show signups
+                        </button>
+                        <button class="btn btn-danger" routerLink="">
+                            Delete workshop
                         </button>
                     </div>
                 </td>

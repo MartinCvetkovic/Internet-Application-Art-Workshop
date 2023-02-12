@@ -373,4 +373,34 @@ export class WorkshopController {
             }
         );
     }
+    
+    resolveSignup(req: express.Request, res: express.Response) {
+        Workshop.findOneAndUpdate(
+            {
+                "_id": req.body._id
+            },
+            {
+                "$set":
+                {
+                    "participants.$[p].status": req.body.status
+                }
+            },
+            {
+                arrayFilters:
+                [
+                    {
+                        "p.username": req.body.username
+                    }
+                ]
+            },
+            (err, w) => {
+                if (err) console.log(err);
+                else {
+                    Workshop.findById(req.body._id, (err, w) => {
+                        res.json(w);
+                    });
+                }
+            }
+        )
+    }
 }

@@ -146,4 +146,13 @@ export class WorkshopService {
     }
     return this.http.post(`${this.uri}/workshops/editWorkshop`, data);
   }
+
+  resolveSignup(_id, username, status) {
+    let data = {
+      _id: _id,
+      username: username,
+      status: status
+    }
+    return this.http.post(`${this.uri}/workshops/resolveSignup`, data);
+  }
 }

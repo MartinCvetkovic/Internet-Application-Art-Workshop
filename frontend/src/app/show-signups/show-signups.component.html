@@ -1,0 +1,21 @@
+<h2>Workshop signups</h2>
+<table class="table p-3" *ngIf="signups.length > 0; else noWorkshops">
+    <tr>
+        <th class="text-center">Username</th>
+        <th class="text-center">Approval</th>
+    </tr>
+    <tr *ngFor="let s of signups">
+        <td class="text-center">{{s['username']}}</td>
+        <td>
+            <div class="d-flex justify content between">
+                <button class="btn btn-success p-1" (click)="approve(s['username'])">Approve</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-danger p-1" (click)="reject(s['username'])">Reject</button>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<ng-template #noWorkshops>
+    <br>
+    <h5>The are no pending requests.</h5>
+</ng-template>
