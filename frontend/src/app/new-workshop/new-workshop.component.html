@@ -41,7 +41,13 @@
         <tr>
             <td>Gallery images:</td>
             <td>
-                <input type="file" id="gallery_images" (change)="multipleFileChangeEvent($event)" multiple>
+                <input type="file" name="gallery_images" (change)="multipleFileChangeEvent($event)" multiple>
+            </td>
+        </tr>
+        <tr>
+            <td>Import template:</td>
+            <td>
+                <input type="file" name="template" (change)="uploadTemplate($event)">
             </td>
         </tr>
         <tr>

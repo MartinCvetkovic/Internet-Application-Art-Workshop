@@ -36,4 +36,11 @@ export class MyWorkshopsComponent implements OnInit {
       return w._id === _id;
     })));
   }
+
+  downloadTemplate(workshop: Workshop) {
+    let data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(workshop));
+    var downloadTemplate = document.getElementById('downloadTemplate');
+    downloadTemplate.setAttribute("href", data);
+    downloadTemplate.setAttribute("download", "template.json");
+  }
 }

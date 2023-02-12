@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Workshop } from '../models/workshop';
 import { WorkshopService } from '../services/workshop.service';
 
 @Component({
@@ -33,6 +34,8 @@ export class NewWorkshopComponent implements OnInit {
 
   user: Object;
 
+  template: string;
+
   
   fileChangeEvent(fileInput: any) {
     this.imageError = null;
@@ -49,7 +52,6 @@ export class NewWorkshopComponent implements OnInit {
         image.src = e.target.result;
         image.onload = rs => {
           this.main_img = e.target.result;
-          console.log(this.main_img)
         };
       };
 
@@ -95,6 +97,7 @@ export class NewWorkshopComponent implements OnInit {
     if (
       this.name === undefined || this.name === "" ||
       this.date === undefined || this.date === "" ||
+      this.time === undefined || this.time === "" ||
       this.place === undefined || this.place === "" ||
       this.short_description === undefined || this.short_description === "" ||
       this.long_description === undefined || this.long_description === "" ||
@@ -122,5 +125,31 @@ export class NewWorkshopComponent implements OnInit {
       this.successInfo = "Workshop created successfully.";
       this.errorMessage = null;
     });
+  }
+
+  
+  uploadTemplate(fileInput: any) {
+    if (fileInput.target.files && fileInput.target.files[0]) {
+      if (!['application/json'].includes(fileInput.target.files[0].type)) {
+        this.imageError = 'Only JSON file is allowed.';
+        return;
+      }
+
+      let reader = new FileReader();
+      reader.readAsText(fileInput.target.files[0], 'utf8');
+      reader.onload = (e: any) => {
+        this.template = decodeURIComponent(e.target.result);
+        let w: Workshop = JSON.parse(this.template);
+        this.name = w['name'];
+        this.date = w.date.substring(0, 10);
+        this.time = w.date.substring(11, 16);
+        this.place = w['place'];
+        this.short_description = w['short_description'];
+        this.long_description = w['long_description'];
+        this.main_img = w['main_img'];
+        this.gallery_images = w['gallery_images'];
+        this.available_spots = w.available_spots.valueOf();
+      };
+    }
   }
 }
