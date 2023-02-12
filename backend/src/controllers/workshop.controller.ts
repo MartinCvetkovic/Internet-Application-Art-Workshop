@@ -403,4 +403,24 @@ export class WorkshopController {
             }
         )
     }
+
+    deleteWorkshop(req: express.Request, res: express.Response) {
+        Workshop.findOneAndUpdate(
+            {
+                "_id": req.body._id
+            },
+            {
+                "$set":
+                {
+                    "status": "inactive"
+                }
+            },
+            (err, w) => {
+                if (err) console.log(err);
+                else {
+                    res.json(w);
+                }
+            }
+        )
+    }
 }

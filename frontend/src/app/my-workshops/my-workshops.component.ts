@@ -43,4 +43,10 @@ export class MyWorkshopsComponent implements OnInit {
     downloadTemplate.setAttribute("href", data);
     downloadTemplate.setAttribute("download", "template.json");
   }
+
+  deleteWorkshop(_id: string) {
+    this.workshopService.deleteWorkshop(_id).subscribe((resp)=>{
+      this.ngOnInit();
+    })
+  }
 }

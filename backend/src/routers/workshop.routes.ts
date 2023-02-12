@@ -55,4 +55,8 @@ workshopRouter.route("/resolveSignup").post(
     (req, res) => new WorkshopController().resolveSignup(req, res)
 );
 
+workshopRouter.route("/deleteWorkshop").post(
+    (req, res) => new WorkshopController().deleteWorkshop(req, res)
+);
+
 export default workshopRouter;
