@@ -1,1 +1,62 @@
-<p>edit-workshop works!</p>
+<div class="d-flex justify-content-center">
+    <h2>New workshop</h2>
+</div>
+<br>
+<form>
+    <table class="table">
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" class="form-control" name="name" [(ngModel)]="name"></td>
+        </tr>
+        <tr>
+            <td>Date:</td>
+            <td><input type="date" class="form-control" name="date" [(ngModel)]="date"></td>
+        </tr>
+        <tr>
+            <td>Time:</td>
+            <td><input type="time" class="form-control" name="time" [(ngModel)]="time"></td>
+        </tr>
+        <tr>
+            <td>Place:</td>
+            <td><input type="text" class="form-control" name="place" [(ngModel)]="place"></td>
+        </tr>
+        <tr>
+            <td>Short description:</td>
+            <td><input type="text" class="form-control" name="short_description" [(ngModel)]="short_description"></td>
+        </tr>
+        <tr>
+            <td>Long description:</td>
+            <td><input type="text" class="form-control" name="long_description" [(ngModel)]="long_description"></td>
+        </tr>
+        <tr>
+            <td>Available spots:</td>
+            <td><input type="number" class="form-control" name="available_spots" [(ngModel)]="available_spots"></td>
+        </tr>
+        <tr>
+            <td>Main image:</td>
+            <td>
+                <input type="file" name="main_img" [(ngModel)]="main_img" (change)="fileChangeEvent($event)">
+            </td>
+        </tr>
+        <tr>
+            <td>Gallery images:</td>
+            <td>
+                <input type="file" name="gallery_images" (change)="multipleFileChangeEvent($event)" multiple>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-success" (click)="editWorkshop()">Apply changes</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center">
+                <label class="error">{{errorMessage}}</label>
+                <label class="error">{{imageError}}</label>
+                <label class="success">{{successInfo}}</label>
+            </td>
+        </tr>
+    </table>
+</form>

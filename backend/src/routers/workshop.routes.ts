@@ -47,4 +47,8 @@ workshopRouter.route("/newWorkshop").post(
     (req, res) => new WorkshopController().newWorkshop(req, res)
 );
 
+workshopRouter.route("/editWorkshop").post(
+    (req, res) => new WorkshopController().editWorkshop(req, res)
+);
+
 export default workshopRouter;

@@ -342,4 +342,35 @@ export class WorkshopController {
             res.status(400).json({"message": "Error creating workshop."});
         });
     }
+    
+    editWorkshop(req: express.Request, res: express.Response) {
+        
+        let _id = req.body._id;
+        let name = req.body.name;
+        let main_img = req.body.main_img;
+        let date = req.body.date;
+        let place = req.body.place;
+        let short_description = req.body.short_description;
+        let long_description = req.body.long_description;
+        let images = req.body.images;
+        let available_spots = req.body.available_spots;
+
+        Workshop.findOneAndUpdate(
+            {"_id": _id},
+            {
+                "name": name,
+                "main_img": main_img,
+                "date": date,
+                "place": place,
+                "short_description": short_description,
+                "long_description": long_description,
+                "images": images,
+                "available_spots": available_spots
+            },
+            (err, w) => {
+                if (err) console.log(err);
+                else res.json(w);
+            }
+        );
+    }
 }
