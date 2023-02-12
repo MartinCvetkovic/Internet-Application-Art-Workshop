@@ -56,7 +56,6 @@ export class RegisterComponent implements OnInit {
             this.imageError = "Allowed profile picture dimensions are between 100x100px and 300x300px.";
           } else {
             this.image = e.target.result;
-            console.log(this.image)
           }
         };
       };

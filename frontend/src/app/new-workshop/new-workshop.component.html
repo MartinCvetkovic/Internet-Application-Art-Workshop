@@ -10,7 +10,11 @@
         </tr>
         <tr>
             <td>Date:</td>
-            <td><input type="text" class="form-control" name="date" [(ngModel)]="date"></td>
+            <td><input type="date" class="form-control" name="date" [(ngModel)]="date"></td>
+        </tr>
+        <tr>
+            <td>Time:</td>
+            <td><input type="time" class="form-control" name="time" [(ngModel)]="time"></td>
         </tr>
         <tr>
             <td>Place:</td>
@@ -25,6 +29,10 @@
             <td><input type="text" class="form-control" name="long_description" [(ngModel)]="long_description"></td>
         </tr>
         <tr>
+            <td>Available spots:</td>
+            <td><input type="number" class="form-control" name="available_spots" [(ngModel)]="available_spots"></td>
+        </tr>
+        <tr>
             <td>Main image:</td>
             <td>
                 <input type="file" name="main_img" [(ngModel)]="main_img" (change)="fileChangeEvent($event)">
@@ -33,8 +41,7 @@
         <tr>
             <td>Gallery images:</td>
             <td>
-                <input type="file" id="gallery_images" name="gallery_images" [(ngModel)]="gallery_images"
-                    (change)="fileChangeEvent($event)" multiple>
+                <input type="file" id="gallery_images" (change)="multipleFileChangeEvent($event)" multiple>
             </td>
         </tr>
         <tr>
