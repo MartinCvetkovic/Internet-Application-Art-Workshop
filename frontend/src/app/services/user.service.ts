@@ -94,4 +94,20 @@ export class UserService {
   getAllUsers() {
     return this.http.post(`${this.uri}/users/getAllUsers`, {});
   }
+
+  accept(username) {
+    const data = {
+      username: username
+    }
+
+    return this.http.post(`${this.uri}/users/accept`, data);
+  }
+
+  reject(username) {
+    const data = {
+      username: username
+    }
+
+    return this.http.post(`${this.uri}/users/reject`, data);
+  }
 }

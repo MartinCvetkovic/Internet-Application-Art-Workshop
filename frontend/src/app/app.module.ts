@@ -21,6 +21,7 @@ import { WorkshopMessagesComponent } from './workshop-messages/workshop-messages
 import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
 import { NewWorkshopComponent } from './new-workshop/new-workshop.component';
 import { ShowSignupsComponent } from './show-signups/show-signups.component';
+import { RegistrationsComponent } from './registrations/registrations.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ShowSignupsComponent } from './show-signups/show-signups.component';
     WorkshopMessagesComponent,
     EditWorkshopComponent,
     NewWorkshopComponent,
-    ShowSignupsComponent
+    ShowSignupsComponent,
+    RegistrationsComponent
   ],
   imports: [
     BrowserModule,

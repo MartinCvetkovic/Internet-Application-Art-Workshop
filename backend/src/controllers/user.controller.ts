@@ -165,4 +165,38 @@ export class UserController{
             }
         });
     }
+
+    accept(req: express.Request, res: express.Response) {
+        User.findOneAndUpdate(
+            {"username": req.body.username},
+            {
+                "$set":
+                {
+                    "status" : "active"
+                }
+            },
+            (err, usr) =>
+            {
+                if (err) console.log(err);
+                else res.json({"message": "Update successful."});
+            }
+        );
+    }
+
+    reject(req: express.Request, res: express.Response) {
+        User.findOneAndUpdate(
+            {"username": req.body.username},
+            {
+                "$set":
+                {
+                    "status" : "inactive"
+                }
+            },
+            (err, usr) =>
+            {
+                if (err) console.log(err);
+                else res.json({"message": "Update successful."});
+            }
+        );
+    }
 }

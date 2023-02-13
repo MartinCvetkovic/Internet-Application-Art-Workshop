@@ -47,6 +47,8 @@ export class MyWorkshopsComponent implements OnInit {
   deleteWorkshop(_id: string) {
     this.workshopService.deleteWorkshop(_id).subscribe((resp)=>{
       this.ngOnInit();
-    })
+    });
+
+    // TODO send email
   }
 }

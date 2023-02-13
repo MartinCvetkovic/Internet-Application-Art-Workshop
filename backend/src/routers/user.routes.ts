@@ -27,4 +27,12 @@ userRouter.route("/getAllUsers").post(
     (req, res) => new UserController().getAllUsers(req, res)
 );
 
+userRouter.route("/accept").post(
+    (req, res) => new UserController().accept(req, res)
+);
+
+userRouter.route("/reject").post(
+    (req, res) => new UserController().reject(req, res)
+);
+
 export default userRouter;

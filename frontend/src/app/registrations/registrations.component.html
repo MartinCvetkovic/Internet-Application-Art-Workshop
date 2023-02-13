@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-center">
+    <h2>Registrations</h2>
+</div>
+<table class="table">
+    <tr>
+        <th>Username</th>
+        <th>Accept</th>
+        <th>Reject</th>
+    </tr>
+    <tr *ngFor="let user of newUsers">
+        <td>{{user['username']}}</td>
+        <td><button class="btn btn-success" (click)="accept(user['username'])">Accept</button></td>
+        <td><button class="btn btn-danger" (click)="reject(user['username'])">Reject</button></td>
+    </tr>
+</table>
