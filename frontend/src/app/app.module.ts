@@ -24,6 +24,7 @@ import { ShowSignupsComponent } from './show-signups/show-signups.component';
 import { RegistrationsComponent } from './registrations/registrations.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AdminEditUserComponent } from './admin-edit-user/admin-edit-user.component';
+import { ManageWorkshopsComponent } from './manage-workshops/manage-workshops.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AdminEditUserComponent } from './admin-edit-user/admin-edit-user.compon
     ShowSignupsComponent,
     RegistrationsComponent,
     ManageUsersComponent,
-    AdminEditUserComponent
+    AdminEditUserComponent,
+    ManageWorkshopsComponent
   ],
   imports: [
     BrowserModule,

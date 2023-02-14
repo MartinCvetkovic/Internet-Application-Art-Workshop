@@ -28,8 +28,9 @@
         </div>
         <div class="col-sm-12 d-flex justify-content-around" *ngIf="user !== null && user['type'] === 'admin'">
             <a routerLink="manageUsers"><button class="btn btn-outline-info">Manage users</button></a>
+            <a routerLink="manageWorkshops"><button class="btn btn-outline-info">Manage workshops</button></a>
             <a routerLink="registrations"><button class="btn btn-outline-info">Registrations</button></a>
-            <a routerLink=""><button class="btn btn-outline-info">Workshops</button></a>
+            <a routerLink="newWorkshop"><button class="btn btn-outline-info">New workshop</button></a>
         </div>
     </div>
     <div class="row main-row d-flex justify-content-center mt-5">

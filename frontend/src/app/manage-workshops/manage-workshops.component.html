@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-center">
+    <h2>All workshops</h2>
+</div>
+<table class="table" *ngIf="canWriteWorkshops; else noWorkshops">
+    <tr *ngFor="let w of allActiveWorkshops">
+        <table>
+            <tr>
+                <td rowspan="3">
+                    <img src="{{w.main_img}}" style="width: 200px; height: 200px;">
+                </td>
+                <td>
+                    <h5>{{w.name}}</h5>
+                    <label>Date: {{w.date}}</label><br>
+                    <label>Place: {{w.place}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Short description: {{w.short_description}}</label><br>
+                    <label>Status: {{w.status}}</label><br>
+                    <label>Owner: {{w.owner}}</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-info" routerLink="workshopDetails"
+                        (click)="addCurrentWorkshop(w._id)">Edit workshop</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-danger" (click)="deleteWorkshop(w._id)">Delete workshop</button>
+                </td>
+            </tr>
+        </table>
+    </tr>
+</table>
+
+<ng-template #noWorkshops>
+    <br><br><br><br>
+    <div class="d-flex justify-content-center">
+        <h5>There are no active workshops found.</h5>
+    </div>
+</ng-template>
