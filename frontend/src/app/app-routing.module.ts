@@ -7,6 +7,7 @@ import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
 import { HomeComponent } from './home/home.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { LoginComponent } from './login/login.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { MyActionsComponent } from './my-actions/my-actions.component';
 import { MyMessagesComponent } from './my-messages/my-messages.component';
 import { MyWorkshopsComponent } from './my-workshops/my-workshops.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "loginAdmin", component: LoginAdminComponent},
   {path: "register", component: RegisterComponent},
+  {path: "manageUsers/register", component: RegisterComponent},
   {path: "changePassword", component: ChangePasswordComponent},
   {path: "newWorkshop", component: NewWorkshopComponent},
   {path: "myWorkshops", component: MyWorkshopsComponent},
@@ -36,6 +38,7 @@ const routes: Routes = [
   {path: "myWorkshops/editWorkshop", component: EditWorkshopComponent},
   {path: "myWorkshops/showSignups", component: ShowSignupsComponent},
   {path: "registrations", component: RegistrationsComponent},
+  {path: "manageUsers", component: ManageUsersComponent},
 ];
 
 @NgModule({

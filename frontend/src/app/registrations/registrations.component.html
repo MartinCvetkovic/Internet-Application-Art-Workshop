@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
     <h2>Registrations</h2>
 </div>
-<table class="table">
+<table class="table" *ngIf="newUsers.length > 0; else noRegistrations">
     <tr>
         <th>Username</th>
         <th>Accept</th>
@@ -13,3 +13,10 @@
         <td><button class="btn btn-danger" (click)="reject(user['username'])">Reject</button></td>
     </tr>
 </table>
+
+<ng-template #noRegistrations>
+    <br>
+    <div class="d-flex justify-content-center">
+        <h6>No current registrations</h6>
+    </div>
+</ng-template>
