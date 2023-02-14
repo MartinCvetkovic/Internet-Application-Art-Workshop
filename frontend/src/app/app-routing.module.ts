@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ActiveWorkshopsComponent } from './active-workshops/active-workshops.component';
+import { AdminEditUserComponent } from './admin-edit-user/admin-edit-user.component';
 import { AttendedWorkshopsComponent } from './attended-workshops/attended-workshops.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { EditWorkshopComponent } from './edit-workshop/edit-workshop.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: "loginAdmin", component: LoginAdminComponent},
   {path: "register", component: RegisterComponent},
   {path: "manageUsers/register", component: RegisterComponent},
+  {path: "manageUsers/editUser", component: AdminEditUserComponent},
   {path: "changePassword", component: ChangePasswordComponent},
   {path: "newWorkshop", component: NewWorkshopComponent},
   {path: "myWorkshops", component: MyWorkshopsComponent},

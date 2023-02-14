@@ -23,6 +23,7 @@ import { NewWorkshopComponent } from './new-workshop/new-workshop.component';
 import { ShowSignupsComponent } from './show-signups/show-signups.component';
 import { RegistrationsComponent } from './registrations/registrations.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { AdminEditUserComponent } from './admin-edit-user/admin-edit-user.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
     NewWorkshopComponent,
     ShowSignupsComponent,
     RegistrationsComponent,
-    ManageUsersComponent
+    ManageUsersComponent,
+    AdminEditUserComponent
   ],
   imports: [
     BrowserModule,

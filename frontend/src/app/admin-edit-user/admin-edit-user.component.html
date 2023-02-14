@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-center">
+    <h2>Edit user</h2>
+</div>
+<br>
+<form>
+    <table class="table">
+        <tr>
+            <td rowspan="6">
+                <img src="{{oldImage}}" style="height: 200px; width: 200px;"><br><br>
+                <input type="file" name="image" [(ngModel)]="image" (change)="fileChangeEvent($event)">
+            </td>
+        </tr>
+        <tr>
+            <td>Firstname:</td>
+            <td><input type="text" class="form-control" name="firstname" [(ngModel)]="firstname"></td>
+        </tr>
+        <tr>
+            <td>Lastname:</td>
+            <td><input type="text" class="form-control" name="lastname" [(ngModel)]="lastname"></td>
+        </tr>
+        <tr>
+            <td>Phone number:</td>
+            <td><input type="text" class="form-control" name="phone" [(ngModel)]="phone"></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" class="form-control" name="email" [(ngModel)]="email"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center" (click)="updateUser()">
+                <button class="btn btn-light btn-outline-primary">Apply changes</button>
+            </td>
+        </tr>
+    </table>
+    <label class="error">{{imageError}}</label><br>
+    <label class="error">{{errorMessage}}</label><br>
+    <label class="success">{{successInfo}}</label><br>
+    
+</form>

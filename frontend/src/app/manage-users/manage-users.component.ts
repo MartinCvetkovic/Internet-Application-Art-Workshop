@@ -25,4 +25,14 @@ export class ManageUsersComponent implements OnInit {
   allUsers: Array<Object>;
   allActiveNewUsers: Array<Object>;
 
+  delete(username) {
+    this.userService.reject(username).subscribe((resp)=>{
+      this.ngOnInit();
+    })
+  }
+
+  addEditedUser(user) {
+    localStorage.setItem('editingUser', JSON.stringify(user));
+  }
+
 }
