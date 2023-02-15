@@ -383,6 +383,10 @@ export class WorkshopController {
                 "$set":
                 {
                     "participants.$[p].status": req.body.status
+                },
+                "$inc":
+                {
+                    "available_spots": -1
                 }
             },
             {
