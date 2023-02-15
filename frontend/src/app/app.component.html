@@ -20,16 +20,17 @@
         <div class="col-sm-12 d-flex justify-content-around" *ngIf="user !== null && user['type'] === 'participant'">
             <a routerLink="profile"><button class="btn btn-outline-info">Profile</button></a>
             <a routerLink="activeWorkshops"><button class="btn btn-outline-info">Workshops</button></a>
-            <a routerLink=""><button class="btn btn-outline-info">Become organiser</button></a>
+            <a routerLink="newWorkshop"><button class="btn btn-outline-info">Become organiser</button></a>
         </div>
         <div class="col-sm-12 d-flex justify-content-around" *ngIf="user !== null && user['type'] === 'organiser'">
             <a routerLink="myWorkshops"><button class="btn btn-outline-info">Profile</button></a>
             <a routerLink="newWorkshop"><button class="btn btn-outline-info">New workshop</button></a>
         </div>
         <div class="col-sm-12 d-flex justify-content-around" *ngIf="user !== null && user['type'] === 'admin'">
-            <a routerLink="manageUsers"><button class="btn btn-outline-info">Manage users</button></a>
-            <a routerLink="manageWorkshops"><button class="btn btn-outline-info">Manage workshops</button></a>
             <a routerLink="registrations"><button class="btn btn-outline-info">Registrations</button></a>
+            <a routerLink="manageUsers"><button class="btn btn-outline-info">Manage users</button></a>
+            <a routerLink="pendingWorkshops"><button class="btn btn-outline-info">Pending workshops</button></a>
+            <a routerLink="manageWorkshops"><button class="btn btn-outline-info">Manage workshops</button></a>
             <a routerLink="newWorkshop"><button class="btn btn-outline-info">New workshop</button></a>
         </div>
     </div>

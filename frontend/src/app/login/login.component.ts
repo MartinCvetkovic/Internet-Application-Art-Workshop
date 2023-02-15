@@ -34,12 +34,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("user", JSON.stringify(resp));
         if (resp["type"] === "organiser"){
           this.userService.getOrganisation(resp["username"]).subscribe((rspns) => {
-            if (rspns["message"] != null){
-              this.errorMessage = rspns["message"];
-            } else {
-              localStorage.setItem("organisation", JSON.stringify(rspns));
-              location.href = "/";
-            }
+            localStorage.setItem("organisation", JSON.stringify(rspns));
+            location.href = "/";
           });
         } else {
           location.href = "/";

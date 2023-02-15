@@ -14,6 +14,7 @@ import { MyActionsComponent } from './my-actions/my-actions.component';
 import { MyMessagesComponent } from './my-messages/my-messages.component';
 import { MyWorkshopsComponent } from './my-workshops/my-workshops.component';
 import { NewWorkshopComponent } from './new-workshop/new-workshop.component';
+import { PendingWorkshopsComponent } from './pending-workshops/pending-workshops.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { RegistrationsComponent } from './registrations/registrations.component';
@@ -43,6 +44,8 @@ const routes: Routes = [
   {path: "registrations", component: RegistrationsComponent},
   {path: "manageUsers", component: ManageUsersComponent},
   {path: "manageWorkshops", component: ManageWorkshopsComponent},
+  {path: "manageWorkshops/editWorkshop", component: EditWorkshopComponent},
+  {path: "pendingWorkshops", component: PendingWorkshopsComponent},
 ];
 
 @NgModule({

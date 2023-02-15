@@ -110,4 +110,13 @@ export class UserService {
 
     return this.http.post(`${this.uri}/users/reject`, data);
   }
+
+  changeType(username, type) {
+    const data = {
+      username: username,
+      type: type
+    }
+
+    return this.http.post(`${this.uri}/users/changeType`, data);
+  }
 }

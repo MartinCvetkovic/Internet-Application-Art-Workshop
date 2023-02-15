@@ -423,4 +423,24 @@ export class WorkshopController {
             }
         )
     }
+
+    approve(req: express.Request, res: express.Response) {
+        Workshop.findOneAndUpdate(
+            {
+                "_id": req.body._id
+            },
+            {
+                "$set":
+                {
+                    "status": "active"
+                }
+            },
+            (err, w) => {
+                if (err) console.log(err);
+                else {
+                    res.json(w);
+                }
+            }
+        )
+    }
 }

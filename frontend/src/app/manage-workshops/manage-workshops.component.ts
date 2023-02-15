@@ -36,7 +36,7 @@ export class ManageWorkshopsComponent implements OnInit {
   canWriteWorkshops:      boolean;
 
   addCurrentWorkshop(_id: string) {
-    localStorage.setItem('editingWorkshop', JSON.stringify(this.allActiveWorkshops.find((w) => {
+    localStorage.setItem('currentWorkshop', JSON.stringify(this.allActiveWorkshops.find((w) => {
       return w._id === _id;
     })));
   }

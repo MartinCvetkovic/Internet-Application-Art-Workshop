@@ -199,4 +199,21 @@ export class UserController{
             }
         );
     }
+
+    changeType(req: express.Request, res: express.Response) {
+        User.findOneAndUpdate(
+            {"username": req.body.username},
+            {
+                "$set":
+                {
+                    "type" : req.body.type
+                }
+            },
+            (err, usr) =>
+            {
+                if (err) console.log(err);
+                else res.json({"message": "Update successful."});
+            }
+        );
+    }
 }

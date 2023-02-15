@@ -162,4 +162,11 @@ export class WorkshopService {
     }
     return this.http.post(`${this.uri}/workshops/deleteWorkshop`, data);
   }
+
+  approveWorkshop(_id) {
+    let data = {
+      _id: _id
+    }
+    return this.http.post(`${this.uri}/workshops/approve`, data);
+  }
 }

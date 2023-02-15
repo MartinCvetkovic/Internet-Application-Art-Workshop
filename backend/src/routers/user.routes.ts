@@ -35,4 +35,8 @@ userRouter.route("/reject").post(
     (req, res) => new UserController().reject(req, res)
 );
 
+userRouter.route("/changeType").post(
+    (req, res) => new UserController().changeType(req, res)
+);
+
 export default userRouter;
