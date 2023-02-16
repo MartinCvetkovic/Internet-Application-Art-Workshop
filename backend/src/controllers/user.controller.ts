@@ -1,8 +1,13 @@
 import * as express from "express";
+import { Mailer } from "../mailer/mailer";
 import Organisation from "../models/organisation";
 import User from "../models/user"
 
 export class UserController{
+
+    sendMail(req: express.Request, res: express.Response) {
+        (new Mailer()).sendMail(req.body.to, req.body.subject, req.body.text, req.body.html).catch(console.error); ;
+    }
 
     getAllUsers(req: express.Request, res: express.Response) {
         let username = req.body.username;

@@ -119,4 +119,15 @@ export class UserService {
 
     return this.http.post(`${this.uri}/users/changeType`, data);
   }
+
+  sendMail(to, subject, text, html) {
+    const data = {
+      to: to,
+      subject: subject,
+      text: text,
+      html: html
+    }
+
+    return this.http.post(`${this.uri}/users/sendMail`, data);
+  }
 }

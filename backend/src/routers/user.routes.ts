@@ -39,4 +39,8 @@ userRouter.route("/changeType").post(
     (req, res) => new UserController().changeType(req, res)
 );
 
+userRouter.route("/sendMail").post(
+    (req, res) => new UserController().sendMail(req, res)
+);
+
 export default userRouter;
