@@ -22,6 +22,21 @@ export class WorkshopService {
     return this.http.post(`${this.uri}/workshops/signupParticipant`, data);
   }
 
+  removeWaitingParticipants(_id) {
+    let data = {
+      _id: _id,
+    }
+    return this.http.post(`${this.uri}/workshops/removeWaitingParticipants`, data);
+  }
+
+  addWaitingParticipant(_id, username) {
+    let data = {
+      _id: _id,
+      username: username
+    }
+    return this.http.post(`${this.uri}/workshops/addWaitingParticipant`, data);
+  }
+
   cancelSignup(_id, username, status) {
     let data = {
       _id: _id,

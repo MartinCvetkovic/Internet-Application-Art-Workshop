@@ -63,4 +63,12 @@ workshopRouter.route("/approve").post(
     (req, res) => new WorkshopController().approve(req, res)
 );
 
+workshopRouter.route("/addWaitingParticipant").post(
+    (req, res) => new WorkshopController().addWaitingParticipant(req, res)
+);
+
+workshopRouter.route("/removeWaitingParticipants").post(
+    (req, res) => new WorkshopController().removeWaitingParticipants(req, res)
+);
+
 export default workshopRouter;

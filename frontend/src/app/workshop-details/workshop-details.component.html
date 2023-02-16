@@ -26,9 +26,14 @@
                 <td>
                     <label>Number of available spots: &nbsp;</label>
                     <label>{{workshop.available_spots}}&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <button class="btn btn-success" *ngIf="workshop.available_spots > 0 && !signedUp" (click)="signUp()">Sign up</button>
-                    <button class="btn btn-success" *ngIf="workshop.available_spots > 0 && signedUp" disabled>Signed up</button>
-                    <button class="btn btn-success" *ngIf="workshop.available_spots == 0">Notify me when there's an open spot</button>
+                    <button class="btn btn-success" *ngIf="workshop.available_spots > 0 && !signedUp"
+                        (click)="signUp()">Sign up</button>
+                    <button class="btn btn-success" *ngIf="signedUp" disabled>Signed up</button>
+                    <button class="btn btn-success" *ngIf="!signedUp && workshop.available_spots == 0 && !isWaiting"
+                        (click)="addToWaitingList()">Notify me when there's an open spot</button>
+                    <button class="btn btn-success" *ngIf="!signedUp && workshop.available_spots == 0 && isWaiting" disabled>
+                        Notifying me when there's an open spot
+                    </button>
                 </td>
                 <td>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#chatModal">Chat with organiser</button>

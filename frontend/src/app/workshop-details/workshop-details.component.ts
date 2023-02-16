@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Comment } from '../models/comment';
 import { Workshop } from '../models/workshop';
 import { UserService } from '../services/user.service';
 import { WorkshopService } from '../services/workshop.service';
@@ -28,10 +27,14 @@ export class WorkshopDetailsComponent implements OnInit {
     this.place_url = this.sanitizer.bypassSecurityTrustResourceUrl(map_url);
 
     this.signedUp = false;
+    this.isWaiting = false;
     this.username = JSON.parse(localStorage.getItem("user"))['username']
     this.workshop.participants.forEach(p => {
-      if (p.username === this.username) {
+      if (p.username === this.username && p.status !== "waiting") {
         this.signedUp = true;
+      }
+      if (p.username === this.username && p.status === "waiting") {
+        this.isWaiting = true;
       }
     });
 
@@ -74,6 +77,7 @@ export class WorkshopDetailsComponent implements OnInit {
   place_url: SafeResourceUrl;
 
   signedUp: boolean;
+  isWaiting: boolean;
   username: string;
   attendedBefore: boolean;
 
@@ -175,6 +179,17 @@ export class WorkshopDetailsComponent implements OnInit {
       this.workshop = resp;
       localStorage.setItem("currentWorkshop", JSON.stringify(this.workshop));
       this.ngOnInit();
+    });
+  }
+
+  addToWaitingList() {
+    this.workshopService.addWaitingParticipant(this.workshop._id, this.username).subscribe((resp) => {
+      this.isWaiting = true;
+      this.workshop.participants.push({
+        "username": this.username,
+        "status":   "waiting"
+      });
+      localStorage.setItem("currentWorkshop", JSON.stringify(this.workshop));
     });
   }
   

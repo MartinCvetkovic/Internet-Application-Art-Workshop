@@ -30,6 +30,26 @@ export class WorkshopController {
         )
     }
 
+    addWaitingParticipant(req: express.Request, res: express.Response) {
+        Workshop.updateOne(
+            {"_id": req.body._id},
+            {
+                "$push":
+                {
+                    "participants":
+                    {
+                        "username": req.body.username,
+                        "status": "waiting"
+                    }
+                }
+            },
+            (err, w) => {
+                if(err) console.log(err);
+                else res.json({"message": "Succesful waiting signup for workshop."});
+            }
+        )
+    }
+
     cancelSignup(req: express.Request, res: express.Response) {
         Workshop.updateOne(
             {"_id": req.body._id},
@@ -65,6 +85,27 @@ export class WorkshopController {
                     else {
                         res.json({"message": "Succesful cancellation for workshop."});
                     }
+                }
+            }
+        )
+    }
+
+    removeWaitingParticipants(req: express.Request, res: express.Response) {
+        Workshop.updateMany(
+            {"_id": req.body._id},
+            {
+                "$pull":
+                {
+                    "participants":
+                    {
+                        "status": "waiting"
+                    }
+                }
+            },
+            (err, w) => {
+                if(err) console.log(err);
+                else{
+                    res.json({"message": "Succesful removal of waiting participants."});
                 }
             }
         )
