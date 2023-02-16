@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Workshop } from '../models/workshop';
+import { UserService } from '../services/user.service';
 import { WorkshopService } from '../services/workshop.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { WorkshopService } from '../services/workshop.service';
 })
 export class MyWorkshopsComponent implements OnInit {
 
-  constructor(private workshopService: WorkshopService) { }
+  constructor(private workshopService: WorkshopService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.username = JSON.parse(localStorage.getItem('user'))['username'];
@@ -22,8 +23,15 @@ export class MyWorkshopsComponent implements OnInit {
         }
       });
       this.canWriteWorkshops = this.allActiveWorkshops.length > 0;
+    });
+
+    this.allUsers = [];
+    this.userService.getAllUsers().subscribe((resp: any)=>{
+      this.allUsers = resp;
     })
   }
+
+  allUsers: Array<Object>;
 
   allWorkshops:           Array<Workshop>;
   allActiveWorkshops:     Array<Workshop>;
@@ -44,11 +52,29 @@ export class MyWorkshopsComponent implements OnInit {
     downloadTemplate.setAttribute("download", "template.json");
   }
 
-  deleteWorkshop(_id: string) {
-    this.workshopService.deleteWorkshop(_id).subscribe((resp)=>{
+  deleteWorkshop(workshop: Workshop) {
+    workshop.participants.forEach((p)=>{
+      const mailText = "Workshop " + workshop.name + " on date " + workshop.date + " has been cancelled.";
+
+      this.userService.sendMail(
+        this.getEmail(p.username),
+        "Cancelled workshop",
+        mailText,
+        mailText
+      ).subscribe();
+    })
+
+    this.workshopService.deleteWorkshop(workshop._id).subscribe((resp)=>{
       this.ngOnInit();
     });
+  }
 
-    // TODO send email
+  getEmail(username) {
+    for (const user of this.allUsers) {
+      if (user['username'] === username) {
+        return user['email']
+      }
+    }
+    return '';
   }
 }
