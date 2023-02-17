@@ -9,6 +9,20 @@ export class UserController{
         (new Mailer()).sendMail(req.body.to, req.body.subject, req.body.text, req.body.html).catch(console.error); ;
     }
 
+    getUserByEmail(req: express.Request, res: express.Response) {
+        let email = req.body.email;
+
+        User.findOne({"email": email}, (err, user) => {
+            if (err) console.log(err);
+            else {
+                if(user != null)
+                    res.json(user);
+                else
+                    res.json({"message": "Non-existent email."});
+            };
+        });
+    }
+
     getAllUsers(req: express.Request, res: express.Response) {
         let username = req.body.username;
         let password = req.body.password;

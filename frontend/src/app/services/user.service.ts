@@ -130,4 +130,12 @@ export class UserService {
 
     return this.http.post(`${this.uri}/users/sendMail`, data);
   }
+
+  getUserByEmail(email) {
+    const data = {
+      email: email
+    }
+
+    return this.http.post(`${this.uri}/users/getUserByEmail`, data);
+  }
 }

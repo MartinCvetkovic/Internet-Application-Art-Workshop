@@ -18,6 +18,10 @@ export class LoginComponent implements OnInit {
   password: string;
   errorMessage: string;
 
+  email: string;
+  emailMessage: string;
+  emailSuccess: string;
+
   login(){
     this.userService.login(this.username, this.password).subscribe((resp)=>{
       if (resp["message"] != null){
@@ -42,5 +46,54 @@ export class LoginComponent implements OnInit {
         }
       }
     });
+  }
+
+  confirmEmail() {
+    this.userService.getUserByEmail(this.email).subscribe((resp)=>{
+      if (resp['message'] === "Non-existent email.") {
+        this.emailSuccess = "";
+        this.emailMessage = resp['message'];
+      }
+      else {
+        this.emailMessage = "";
+        this.emailSuccess = "Temporary password has been sent to your email address."
+
+        let tempPass = this.randPassword(5, 5, 5, 5);
+        let tempDate = Date.now();
+        let text = "Your temporary password is " + tempPass + ". It will be available for the next 30 minutes.";
+
+        this.userService.sendMail(
+          this.email,
+          "New temporary password",
+          text,
+          text
+        ).subscribe();
+      }
+    })
+  }
+
+  randPassword(capitals, noncapitals, numbers, spec_chars) {
+    var chars = [
+     "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+     "abcdefghijklmnopqrstuvwxyz",
+     "0123456789",
+     "!@#$%^&*()_+=-,."
+    ];
+  
+    function randCharFrom(chars) {
+      return chars[Math.floor(Math.random() * chars.length)];
+    }
+  
+    function shuffle(arr) {
+      for (let i = 0, n = arr.length; i < n - 2; i++) {
+          let j = Math.floor(Math.random() * (n - i));
+          [arr[j], arr[i]] = [arr[i], arr[j]];
+      }
+      return arr;
+    }
+  
+    return randCharFrom(chars[1]) + shuffle([capitals, noncapitals, numbers, spec_chars].map(function(len, i) {
+      return Array(len).fill(chars[i]).map(x => randCharFrom(x)).join('');
+    }).concat().join('').split('')).join('')
   }
 }

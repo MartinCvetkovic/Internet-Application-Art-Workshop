@@ -43,4 +43,8 @@ userRouter.route("/sendMail").post(
     (req, res) => new UserController().sendMail(req, res)
 );
 
+userRouter.route("/getUserByEmail").post(
+    (req, res) => new UserController().getUserByEmail(req, res)
+);
+
 export default userRouter;
