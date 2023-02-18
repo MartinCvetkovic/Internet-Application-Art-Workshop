@@ -23,10 +23,32 @@ export class UserController{
         });
     }
 
-    getAllUsers(req: express.Request, res: express.Response) {
-        let username = req.body.username;
-        let password = req.body.password;
+    setTempPassword(req: express.Request, res: express.Response) {
+        let email = req.body.email;
 
+        User.findOneAndUpdate(
+            {"email": email},
+            {
+                "$set":
+                {
+                    "tempPass": req.body.tempPass,
+                    "tempDate": req.body.tempDate
+                }
+            },
+            (err, user) =>
+            {
+                if (err) console.log(err);
+                else {
+                    if(user != null)
+                        res.json(user);
+                    else
+                        res.json({"message": "Non-existent email."});
+                };
+            }
+        );
+    }
+
+    getAllUsers(req: express.Request, res: express.Response) {
         User.find({}, (err, user) => {
             if (err) console.log(err);
             else {
@@ -43,6 +65,21 @@ export class UserController{
         let password = req.body.password;
 
         User.findOne({"username": username, "password": password}, (err, user) => {
+            if (err) console.log(err);
+            else {
+                if(user != null)
+                    res.json(user);
+                else
+                    res.json({"message": "Wrong username or password."});
+            };
+        });
+    }
+
+    tempLogin(req: express.Request, res: express.Response) {
+        let username = req.body.username;
+        let tempPass = req.body.tempPass;
+
+        User.findOne({"username": username, "tempPass": tempPass}, (err, user) => {
             if (err) console.log(err);
             else {
                 if(user != null)
@@ -78,6 +115,8 @@ export class UserController{
                             phone:      req.body.phone,
                             email:      req.body.email,
                             image:      req.body.image,
+                            tempPass:   null,
+                            tempDate:   null,
                             type:       req.body.type,
                             status:     "new"
                         });

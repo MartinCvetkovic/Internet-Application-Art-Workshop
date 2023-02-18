@@ -11,6 +11,8 @@ let User = new Schema(
         phone:      {type: String},
         email:      {type: String},
         image:      {type: String},
+        tempPass:   {type: String},
+        tempDate:   {type: String},
         type:       {type: String},
         status:     {type: String}
     }

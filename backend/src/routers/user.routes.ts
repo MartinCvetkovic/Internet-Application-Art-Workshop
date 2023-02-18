@@ -47,4 +47,12 @@ userRouter.route("/getUserByEmail").post(
     (req, res) => new UserController().getUserByEmail(req, res)
 );
 
+userRouter.route("/setTempPassword").post(
+    (req, res) => new UserController().setTempPassword(req, res)
+);
+
+userRouter.route("/tempLogin").post(
+    (req, res) => new UserController().tempLogin(req, res)
+);
+
 export default userRouter;

@@ -19,6 +19,15 @@ export class UserService {
     return this.http.post(`${this.uri}/users/login`, data);
   }
 
+  tempLogin(username, tempPass) {
+    const data = {
+      username: username,
+      tempPass: tempPass
+    }
+
+    return this.http.post(`${this.uri}/users/tempLogin`, data);
+  }
+
   register(
     firstname:          string,
     lastname:           string,
@@ -137,5 +146,15 @@ export class UserService {
     }
 
     return this.http.post(`${this.uri}/users/getUserByEmail`, data);
+  }
+
+  setTempPass(email, tempPass, tempDate) {
+    const data = {
+      email: email,
+      tempPass: tempPass,
+      tempDate: tempDate
+    }
+
+    return this.http.post(`${this.uri}/users/setTempPassword`, data);
   }
 }
